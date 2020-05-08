@@ -15,8 +15,27 @@ class CreatePartidasTable extends Migration
     {
         Schema::create('partidas', function (Blueprint $table) {
             $table->id();
+            $table->string('tipoJuego',30);
+            $table->integer('precioCarton')->default(20);
+
             $table->timestamps();
         });
+
+        //A la hora de hacer la migración de la tabla crea las siguientes columnas.
+        DB::table('partidas')->insert(
+            array([
+                 'tipoJuego' => 'Partida Rápida',
+                 'precioCarton' => 20],
+                [
+                 'tipoJuego' => 'Partida Normal',
+                 'precioCarton' => 30],
+                [
+                 'tipoJuego' => 'Partida Larga',
+                 'precioCarton' => 40]
+            )
+        );
+
+
     }
 
     /**
