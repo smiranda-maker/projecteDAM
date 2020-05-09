@@ -20,7 +20,7 @@ class CreatePartidasTable extends Migration
             $table->integer('fichasGanadas');
             $table->integer('numCartones');
             $table->foreign('user_id')->references('id')->on('users'); 
-            $table->foreign('ciudad_id')->references('id')->on('ciudades');
+            $table->foreign('ciudad_id')->references('id')->on('ciudads');
             $table->timestamps();
         });
 
