@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartidasTable extends Migration
+class CreateCiudadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,29 +13,26 @@ class CreatePartidasTable extends Migration
      */
     public function up()
     {
-        Schema::create('partidas', function (Blueprint $table) {
+        Schema::create('ciudades', function (Blueprint $table) {
             $table->id();
-            $table->string('tipoJuego',30);
-            $table->integer('precioCarton')->default(20);
-
+            $table->string('nombre',20);
+            $table->integer('precioCarton');
             $table->timestamps();
         });
 
-        //A la hora de hacer la migración de la tabla crea las siguientes columnas.
-        DB::table('partidas')->insert(
+         //A la hora de hacer la migración de la tabla crea las siguientes columnas.
+         DB::table('ciudades')->insert(
             array([
-                 'tipoJuego' => 'Partida Rápida',
+                 'nombre' => 'Madrid',
                  'precioCarton' => 20],
                 [
-                 'tipoJuego' => 'Partida Normal',
+                 'nombre' => 'Dubai',
                  'precioCarton' => 30],
                 [
-                 'tipoJuego' => 'Partida Larga',
+                 'nombre' => 'Las Vegas',
                  'precioCarton' => 40]
             )
         );
-
-
     }
 
     /**
@@ -45,6 +42,6 @@ class CreatePartidasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partidas');
+        Schema::dropIfExists('ciudades');
     }
 }

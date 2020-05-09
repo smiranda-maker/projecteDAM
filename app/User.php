@@ -40,7 +40,7 @@ class User extends Authenticatable
     ];
 
 
-    public function partidas(){
-        return $this->belongsToMany(Partida::class);
+    public function ciudades(){
+        return $this->belongsToMany(Ciudad::class,'partida');
     }
 }
