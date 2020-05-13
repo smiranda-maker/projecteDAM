@@ -18,3 +18,7 @@ class CiudadController extends Controller
     }
 
 }
+
+header("Content-type: application/json");
+header("Access-Control-Allow-Origin:*");
+ob_end_flush();

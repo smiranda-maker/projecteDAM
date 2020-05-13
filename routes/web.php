@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 Route::get('/ciudades','CiudadController@ciudades');
 
+Route::get('/prueba',function(){
+    return view('prueba');
+});
 
 
 
