@@ -1,100 +1,227 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="es">
 
-        <title>Laravel</title>
+<head>
+    <meta name="author" content="Omar Loza , Sebastian  y Victor" />
+    <meta name="copyright" content="Bingo VO'S  copyright" />
+    <meta name="description" content="Bingo" />
+    <meta charset="UTF-8">
+    <title>BINGO CITIES</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .input-field input[type=text]:focus+label {
+            color: rgb(221, 119, 59);
+        }
 
-            .full-height {
-                height: 100vh;
-            }
+        /* label underline focus color */
+        .input-field input[type=text]:focus {
+            border-bottom: 1px solid rgb(221, 119, 59);
+            ;
+            box-shadow: 0 1px 0 0 orange;
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            .position-ref {
-                position: relative;
-            }
+        }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        page-footer {
+            padding-top: 20px;
+            color: #fff;
+            background-color: #360c0d;
+        }
 
-            .content {
-                text-align: center;
-            }
+        .input-field input[type=select] {
+            color: orange;
+        }
 
-            .title {
-                font-size: 84px;
-            }
+        select option {
+            color: orange;
+        }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        select {
+            color: rgba(0, 0, 0, .4);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom-color: rgba(0, 0, 0, .4);
+        }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        select:focus {
+            border-bottom-color: orange;
+            box-shadow: 0 1px 0 0 orange;
+        }
+    </style>
+</head>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+<body>
+
+    <div class="black">
+        <div class="container section" style="padding: 1.5%; ">
+            <a href="#" class="brand-logo orange-text text-lighten-2" style="font-size: 28px;"> Bingo</a>
+            <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons orange-text text-lighten-2">menu</i></a>
+
+            <ul class="sidenav" id="menu-side">
+
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="bingo-online.png" class="responsive-img" alt="">
+                        </div>
+                        <a href="#">
+                            <img src="icn.png" alt="" class="circle">
+                        </a>
+                        <a href="#">
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
+                        </a>
+                        <a href="#">
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
+                        </a>
+
+                    </div>
+                    <a href="#">
+                        <i class="material-icons">home</i>
+                        Inicio
+                    </a>
+
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a href="#">
+                        <i class="material-icons">home</i>
+                        Inicio
+                    </a>
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a href="#">
+                        <i class="material-icons">home</i>
+                        Inicio
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="carousel carousel-slider center">
+       
+        <div class="carousel-item red white-text" style="background-image: url('/images/las-vegsa.jpg') " href="#one!">
+        <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
+            <p class="white-text">Las vegas</p>
+        </div>
+        <div class="carousel-item amber white-text" style="background-image: url('/images/dubai.jpeg') " href="#two!">
+        <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
+            <p class="white-text">Dubai</p>
+        </div>
+        <div class="carousel-item madrid" style="background-image: url('/images/madrid.jpg') " href="#three!">
+        <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
+            <p class="white-text">Madrid</p>
+        </div>
+
+    </div>
+
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header">EXPLICACIÓN DE PAGINA</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header">COMO SE JUEGA</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header">PREMIOS</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header">SALA DE JUEGOS</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+    </ul>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="input-field col s4"></div>
+
+
+
+
+            <div class="row">
+
+                <div class="col s12">
+
+
                 </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+
+
+            </div>
+
+        </div>
+
+        <footer class="page-footer" style="background-color: #272626;">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Contenido</h5>
+                        <p class="grey-text text-lighten-4">Aqui va algo xD</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Contactanos</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </body>
+            <div class="footer-copyright" style="    background-color: #070606;">
+                <div class="container">
+                    © 2020 Copyright Victor, Sebastian y Omar
+                    <a class="grey-text text-lighten-4 right" href="#!">Más información</a>
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+
+                var elems = document.querySelectorAll('.sidenav');
+                var instances = M.Sidenav.init(elems);
+
+                var elems = document.querySelectorAll('select');
+                var instances = M.FormSelect.init(elems);
+
+            });
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.carousel');
+                var instances = M.Carousel.init(elems);
+            });
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.collapsible');
+
+                var instances = M.Collapsible.init(elems);
+            });
+        </script>
+</body>
+
 </html>
