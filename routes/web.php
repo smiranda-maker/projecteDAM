@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ciudades','CiudadController@ciudades');
-
-Route::get('/prueba',function(){
-    return view('prueba');
+/*
+Route::get('/productos', function () {
+    return view('todosproductos');
 });
-
-
-
+*/
+//Route::get('/productos','ProductoController@productos');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/todosproductos', 'ProductoController@todoslosproductos');

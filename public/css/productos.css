@@ -1,0 +1,54 @@
+.orange-text.text-lighten-2 {
+    color: white !important;
+}
+
+.menu {
+    color: white !important;
+}
+
+.logo-nav {
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 15px white;
+    font-size: 20px !important;
+    font-family: 'Bangers', cursive;
+}
+
+.input-field input[type=text]:focus+label {
+    color: rgb(221, 119, 59);
+}
+
+
+/* label underline focus color */
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid rgb(221, 119, 59);
+    ;
+    box-shadow: 0 1px 0 0 orange;
+}
+
+page-footer {
+    padding-top: 20px;
+    color: #fff;
+    background-color: #360c0d;
+}
+
+.input-field input[type=select] {
+    color: orange;
+}
+
+select option {
+    color: orange;
+}
+
+select {
+    color: rgba(0, 0, 0, .4);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgba(0, 0, 0, .4);
+}
+
+select:focus {
+    border-bottom-color: orange;
+    box-shadow: 0 1px 0 0 orange;
+}

@@ -12,57 +12,16 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style>
-        .input-field input[type=text]:focus+label {
-            color: rgb(221, 119, 59);
-        }
-
-        /* label underline focus color */
-        .input-field input[type=text]:focus {
-            border-bottom: 1px solid rgb(221, 119, 59);
-            ;
-            box-shadow: 0 1px 0 0 orange;
+    <link rel="stylesheet" href="/css/home.css">
 
 
-        }
-
-        page-footer {
-            padding-top: 20px;
-            color: #fff;
-            background-color: #360c0d;
-        }
-
-        .input-field input[type=select] {
-            color: orange;
-        }
-
-        select option {
-            color: orange;
-        }
-
-        select {
-            color: rgba(0, 0, 0, .4);
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-bottom-color: rgba(0, 0, 0, .4);
-        }
-
-        select:focus {
-            border-bottom-color: orange;
-            box-shadow: 0 1px 0 0 orange;
-        }
-    </style>
 </head>
 
 <body>
-
     <div class="black">
         <div class="container section" style="padding: 1.5%; ">
-            <a href="#" class="brand-logo orange-text text-lighten-2" style="font-size: 28px;"> Bingo</a>
+            <a href="#" class="logo-nav" style="font-size: 28px;"> BINGO CITIES</a>
             <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons orange-text text-lighten-2">menu</i></a>
 
             <ul class="sidenav" id="menu-side">
@@ -83,24 +42,35 @@
                         </a>
 
                     </div>
-                    <a href="#">
-                        <i class="material-icons">home</i>
-                        Inicio
-                    </a>
+                   
 
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <a href="#">
+                    <a href="/">
                         <i class="material-icons">home</i>
-                        Inicio
+                        BINGO CITIES
                     </a>
                 </li>
                 <div class="divider"></div>
                 <li>
                     <a href="#">
-                        <i class="material-icons">home</i>
-                        Inicio
+                        <i class="material-icons">videogame_asset</i>
+                        SALAS
+                    </a>
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a href="/productos">
+                        <i class="material-icons">store</i>
+                        PRODUCTOS
+                    </a>
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a href="#">
+                        <i class="material-icons">shopping_cart</i>
+                        COMPRAS
                     </a>
                 </li>
 
@@ -110,25 +80,25 @@
     </div>
 
     <div class="carousel carousel-slider center">
-       
+
         <div class="carousel-item red white-text" style="background-image: url('/images/las-vegsa.jpg') " href="#one!">
-        <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
-            <p class="white-text">Las vegas</p>
+            <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
+            <p class="lasvegas">LAS VEGAS</p>
         </div>
         <div class="carousel-item amber white-text" style="background-image: url('/images/dubai.jpeg') " href="#two!">
-        <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
-            <p class="white-text">Dubai</p>
+            <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
+            <p class="dubai">DUBAI</p>
         </div>
         <div class="carousel-item madrid" style="background-image: url('/images/madrid.jpg') " href="#three!">
-        <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
-            <p class="white-text">Madrid</p>
+            <img src="/images/bingo-title.png" alt="logo" style="width: 20%">
+            <p class="madrid">MADRID</p>
         </div>
 
     </div>
 
     <ul class="collapsible">
         <li>
-            <div class="collapsible-header">EXPLICACIÓN DE PAGINA</div>
+            <div class="collapsible-header" style="margin-left: 100px;">EXPLICACIÓN DE PAGINA</div>
             <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
         <li>

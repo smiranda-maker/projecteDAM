@@ -1,0 +1,87 @@
+@import url(//fonts.googleapis.com/css2?family=Bangers&display=swap>);
+.input-field input[type=text]:focus+label {
+    color: rgb(221, 119, 59);
+}
+
+
+/* label underline focus color */
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid rgb(221, 119, 59);
+    ;
+    box-shadow: 0 1px 0 0 orange;
+}
+
+page-footer {
+    padding-top: 20px;
+    color: #fff;
+    background-color: #360c0d;
+}
+
+.input-field input[type=select] {
+    color: orange;
+}
+
+select option {
+    color: orange;
+}
+
+select {
+    color: rgba(0, 0, 0, .4);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgba(0, 0, 0, .4);
+}
+
+select:focus {
+    border-bottom-color: orange;
+    box-shadow: 0 1px 0 0 orange;
+}
+
+.lasvegas {
+    color: #ff0;
+    text-shadow: 0 0 10px #ff0, 0 0 15px #ff0;
+    font-size: 50px !important;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 10px;
+}
+
+.logo-nav {
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 15px white;
+    font-size: 20px !important;
+    font-family: 'Bangers', cursive;
+}
+
+.dubai {
+    color: #5a0;
+    text-shadow: 0 0 10px #5a0, 0 0 15px #5a0;
+    font-size: 50px !important;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 10px;
+}
+
+.madrid {
+    color: #ff4400;
+    text-shadow: 0 0 10px #ff4400, 0 0 15px #ff4400;
+    font-size: 50px !important;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 10px;
+}
+
+.orange-text.text-lighten-2 {
+    color: white !important;
+}
+
+.collapsible {
+    display: flex;
+    margin-left: 20%;
+    width: 60%;
+}
+
+.collapsible-header {
+    width: 115%;
+    background: none;
+    border-bottom: none;
+}
