@@ -22,7 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('password',20);
             $table->integer('fichas')->default(1000);
             $table->integer('rank');
+            $table->boolean('admin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
+            
             $table->rememberToken();
             $table->timestamps();
         });

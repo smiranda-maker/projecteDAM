@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartidasTable extends Migration
+class CreateComprasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreatePartidasTable extends Migration
      */
     public function up()
     {
-        Schema::create('partidas', function (Blueprint $table) {
+        Schema::create('compras', function (Blueprint $table) {
             $table->id();
+            $table->BigInteger('producto_id')->unsigned();
             $table->BigInteger('user_id')->unsigned();
-            $table->BigInteger('ciudad_id')->unsigned();
-            $table->integer('fichasGanadas');
-            $table->integer('numCartones');
+            $table->foreign('producto_id')->references('id')->on('productos');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('ciudad_id')->references('id')->on('ciudads');
+            $table->date('fecha');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -33,6 +31,6 @@ class CreatePartidasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partidas');
+        Schema::dropIfExists('compras');
     }
 }

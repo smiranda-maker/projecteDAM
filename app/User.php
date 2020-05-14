@@ -39,8 +39,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    //RELACION N-N
     public function ciudades(){
-        return $this->belongsToMany(Ciudad::class,'partida');
+        return $this->belongsToMany(Ciudad::class);
+    }
+
+    //RELACION N-N
+    public function productos(){
+        return $this->belongsToMany(Producto::class,'productos');
     }
 }
