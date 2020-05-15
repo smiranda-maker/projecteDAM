@@ -116,6 +116,39 @@
                 </div>
             </div>
         </div>
+       
+        <div class="añadirproducto">
+            <form method="POST" action="/nuevoproducto" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>nombre</label>
+                    <input type="text" name="nombre" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>descripcion</label>
+                    <input type="text" name="descripcion" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>precio</label>
+                    <input type="number" name="precio" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>stock</label>
+                    <input type="number" name="stock" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen Producto</label>
+                    <input type="file" name="file" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create Producto</button>
+                </div>
+                {{ csrf_field() }}
+            </form>
+
+        </div>
 
 
         <div class="row">
@@ -127,7 +160,7 @@
             <div class="col s4">
                 <div class="card medium">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator responsive-img " src="img2.jpg" style="margin:auto; padding: 20%; margin-top:-15%;">
+                        <img class="activator responsive-img " src="{{$producto['url']}}" style="margin:auto; padding: 20%; margin-top:-15%;">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">{{$producto['nombre']}}<i class="material-icons right orange-text">navigation</i></span>

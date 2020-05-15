@@ -61,7 +61,7 @@
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <a href="/productos">
+                    <a href="/todosproductos">
                         <i class="material-icons">store</i>
                         PRODUCTOS
                     </a>
