@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
+use Vendor\Pixeloution\Random\Randomizer;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,15 @@ Route::get('/productos', function () {
 //Route::get('/productos','ProductoController@productos');
 
 Auth::routes();
+
+// Route::get('/random', 'CiudadController@random');
+Route::get('/random', function(){
+
+    $generator=integers( 0, 100, 15 );
+        
+    return $generator;
+});
+
 
 
 Route::get('/todosproductos', 'ProductoController@todoslosproductos');

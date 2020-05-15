@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Ciudad;
 
+
 class CiudadController extends Controller
 {
     //
@@ -14,6 +15,12 @@ class CiudadController extends Controller
         $ciudades=Ciudad::all();
         
         return $ciudades;
+        
+    }
+
+    public function random(){
+    
+       
         
     }
 
