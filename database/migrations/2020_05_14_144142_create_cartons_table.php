@@ -19,7 +19,8 @@ class CreateCartonsTable extends Migration
             $table->BigInteger('user_id')->unsigned();
             $table->foreign('partida_id')->references('id')->on('partidas');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('numeros',100);
+            $table->string('numeros',300);
+            $table->integer('precio');
             $table->timestamps();
         });
     }

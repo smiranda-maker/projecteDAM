@@ -35,6 +35,11 @@
         background-color: green;
     }
 
+    #botonReg{
+        font-size: 15px;
+        background-color: green;
+    }
+
 
     #butonJugar{
         size: 300px;
@@ -71,51 +76,11 @@
                         <input placeholder="Email" type="email" name="email">
                         <input placeholder="Contraseña" type="password" name="password" id="password">
                         <button id="botonLog" type="submit" class="waves-effect waves-light btn-large">LOGIN</button>
+                        <button id="botonReg" type="submit" class="waves-effect waves-light btn-large"><a style="color:white" href="http://localhost:8000/register">REGISTRARSE</a></button>
                     </form>
                 </div>
             </div>
 
-            <!-- REGISTER -->
-            <div class="col m8 offset-m2">
-                <div id="register" class="card-panel">
-                    <form id="formulario" action="{{route('register')}}" method="POST">
-                    @csrf
-                        <h3 style="text-align: center;">Registrate ahora</h3>
-                        
-                        <p>
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" name="nombre" id="nombre">
-                        </p>
-
-                        <p>
-                            <label for="apellidos">Apellidos:</label>
-                            <input type="text" name="apellidos" id="apellidos">
-                        </p>
-
-                        <p>
-                            <label for="email">Introduce tu correo:</label>
-                            <input type="email" name="email" id="email">
-                        </p>
-           
-                        <p>
-                            <label for="nickname">Escoge un nombre de usuario:</label>
-                            <input type="text" name="nickname" id="nickname">
-                        </p>    
-                       
-                        <p>
-                            <label for="password">Escoge una contraseña:</label>
-                            <input type="password" name="password" id="password">
-                        </p>
-                        
-                        <p>
-                            <label for="password-confirm">Repetir contraseña:</label>
-                            <input type="password" name="password_confirmation" id="password-confirm">
-                        </p>
-                        
-                        <button id="butonJugar" class="btn-floating btn-large waves-effect waves-light green type="submit">JUGAR</button>
-                    </form> 
-                </div>
-            </div>
 				<!-- INFORMACION DEL JUEGO  -->
 				
 				<div class="col m12">

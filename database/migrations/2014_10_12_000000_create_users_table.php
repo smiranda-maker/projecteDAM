@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nombre',20);
             $table->string('apellidos',50);
             $table->string('email',50)->unique();
-            $table->string('nickname',15);
+            $table->string('nickname',15)->unique();
             $table->string('password');
             $table->integer('fichas')->default(1000);
             $table->integer('rank')->nullable();

@@ -16,22 +16,14 @@ class CreateCiudadsTable extends Migration
         Schema::create('ciudads', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',20);
-            $table->integer('precioCarton');
             $table->timestamps();
         });
 
-         //A la hora de hacer la migración de la tabla crea las siguientes columnas.
+         //A la hora de hacer la migración de la tabla crea los siguientes registros.
          DB::table('ciudads')->insert(
-            array([
-                 'nombre' => 'Madrid',
-                 'precioCarton' => 20],
-                [
-                 'nombre' => 'Dubai',
-                 'precioCarton' => 30],
-                [
-                 'nombre' => 'Las Vegas',
-                 'precioCarton' => 40]
-            )
+            array(['nombre' => 'Madrid'],
+                ['nombre' => 'Dubai'],
+                ['nombre' => 'Las Vegas'])
         );
     }
 

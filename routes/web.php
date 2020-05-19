@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-use Vendor\Pixeloution\Random\Randomizer;
+use Pixeloution\Random\Randomizer;
+
+# takes a partial User Agent as an argument; random.org requests you use your
+# email address in case of issues
+$generator = new Randomizer( 'yourfarrukito@gmail.com' );
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +22,7 @@ use Vendor\Pixeloution\Random\Randomizer;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 /*
@@ -30,14 +34,39 @@ Route::get('/productos', function () {
 
 Auth::routes();
 
-// Route::get('/random', 'CiudadController@random');
-Route::get('/random', function(){
+Route::get('/todosproductos', 'ProductoController@todoslosproductos');
 
-    $generator=integers( 0, 100, 15 );
-        
-    return $generator;
+Route::get('/random' , function(){
+
+    // $carton=array();
+
+    // for ($i=0; $i <9; $i++) {
+    //     array_push($carton,rand(1,100));
+    // }
+
+    // return $carton;
+
+    // $numbers = range(1, 100);
+    // shuffle($numbers);
+    // return $numbers;
+
+
+    //Generamos un array de 9 numeros no repetidos del 1 al 100 incluidos. 
+    $cont=0;
+    $carton=array();
+    while ($cont<9) {
+        $num_aleatorio = rand(1,100);
+        if (!in_array($num_aleatorio,$carton)) {
+          array_push($carton,$num_aleatorio);
+          $cont++;
+        }
+      }
+      //Convertimos el array en un string separando los valores con un guión '-'
+      $carton=implode("-",$carton);
+      return view('vistacarton',compact('carton'));
 });
 
 
 
-Route::get('/todosproductos', 'ProductoController@todoslosproductos');
+
+

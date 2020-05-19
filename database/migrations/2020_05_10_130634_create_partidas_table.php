@@ -15,11 +15,9 @@ class CreatePartidasTable extends Migration
     {
         Schema::create('partidas', function (Blueprint $table) {
             $table->id();
-            $table->BigInteger('user_id')->unsigned();
             $table->BigInteger('ciudad_id')->unsigned();
-            $table->integer('fichasGanadas');
-            $table->integer('numCartones');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->date('fechaEmpieza');
+            $table->string('numerosQueHanSalido');
             $table->foreign('ciudad_id')->references('id')->on('ciudads');
             $table->timestamps();
         });

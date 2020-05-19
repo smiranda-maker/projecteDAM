@@ -40,8 +40,8 @@ class User extends Authenticatable
     ];
 
     //RELACION N-N
-    public function ciudades(){
-        return $this->belongsToMany(Ciudad::class);
+    public function partidas(){
+        return $this->belongsToMany(Partida::class);
     }
 
     //RELACION N-N

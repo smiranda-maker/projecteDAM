@@ -66,17 +66,6 @@
                         <img src="images/logocity.png">
                     </div>
             </div>
-			<!-- LOGIN -->
-            <div  class="col m4 offset-m5">
-                <div id="login" class="card-panel">
-                    <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                        <input placeholder="Email" type="email" name="email">
-                        <input placeholder="Contraseña" type="password" name="password" id="password">
-                        <button id="botonLog" type="submit" class="waves-effect waves-light btn-large">LOGIN</button>
-                    </form>
-                </div>
-            </div>
 
             <!-- REGISTER -->
             <div class="col m8 offset-m2">
