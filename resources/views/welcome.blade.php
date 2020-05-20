@@ -70,7 +70,7 @@
                 <li>
                     <a href="#">
                         <i class="material-icons">shopping_cart</i>
-                        COMPRAS
+                        MIS COMPRAS
                     </a>
                 </li>
 

@@ -21,9 +21,16 @@ $generator = new Randomizer( 'yourfarrukito@gmail.com' );
 |
 */
 
+
 Route::get('/', function () {
-    return view('auth/login');
+    return redirect('/login');
 });
+
+Route::get('/welcome', function () {
+  return view('welcome');
+});
+
+
 
 /*
 Route::get('/productos', function () {

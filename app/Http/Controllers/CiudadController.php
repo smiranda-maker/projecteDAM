@@ -12,7 +12,6 @@ class CiudadController extends Controller
 {
     //
 
-
     //Devuelve todas las ciudades
     public function ciudades(){
     
