@@ -24,8 +24,8 @@
 <body>
     <div class="black">
         <div class="container section" style="padding: 1.5%; ">
-            <a href="/welcome" class="logo-nav" style="font-size: 28px;"> BINGO CITIES</a>
-            <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons orange-text text-lighten-2">menu</i></a>
+            <a href="#" class="logo-nav" style="font-size: 28px;"> BINGO CITIES</a>
+            <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons orange-text text-lighten-2 menu">menu</i></a>
 
             <ul class="sidenav" id="menu-side">
 
@@ -40,7 +40,6 @@
                         <a href="#">
                             <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
                         </a>
-
                         <a href="#">
                             <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
                         </a>
@@ -74,19 +73,17 @@
                 <li>
                     <a href="/productoscomprados">
                         <i class="material-icons">shopping_cart</i>
-                        MIS COMPRAS
+                        COMPRAS
                     </a>
                 </li>
+                
 
             </ul>
         </div>
 
     </div>
 
-
-
-
-
+    <h2>ESTOS SON TUS PRODUCTOS COMPRADOS</h2>
     <div class="container">
 
         <div class="row">
@@ -116,83 +113,37 @@
                 </div>
             </div>
         </div>
-      
+
+
+
         <div class="row">
             <div class="col s12">
 
             </div>
-            @foreach($producto as $producto)
+            @foreach($productosarray as $productosarray)
 
             <div class="col s4">
                 <div class="card medium">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator responsive-img " src="{{$producto['url']}}" style="margin:auto; padding: 20%; margin-top:-15%;">
+                        <img class="activator responsive-img " src="{{$productosarray['url']}}" style="margin:auto; padding: 20%; margin-top:-15%;">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">{{$producto['nombre']}}<i class="material-icons right orange-text">navigation</i></span>
+                        <span class="card-title activator grey-text text-darken-4">{{$productosarray['nombre']}}<i class="material-icons right orange-text">navigation</i></span>
 
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">{{$producto['nombre']}}<i class="material-icons right">close</i></span>
-                        <p>{{$producto['descripcion']}}</p>
-                        @if($producto['disposicion']==1)
-                        <p>Disponible, quedan {{$producto['stock']}}</p>
-                        <p>Su precio és: {{$producto['precio']}}</p>
-
-                        @else
-                        <p>Producto no disponible</p>
-                        @endif
+                        <span class="card-title grey-text text-darken-4">{{$productosarray['nombre']}}<i class="material-icons right">close</i></span>
+                        <p>{{$productosarray['descripcion']}}</p>
 
 
                     </div>
                 </div>
-                <form method="POST" action="/compras" enctype="multipart/form-data">
-                    <input type="text" name="producto_id" class="invisible" value="{{$producto['id']}}">
-                    <input type="text" name="user_id" class="invisible" value="1">
-                    <input type="text" name="precio" class="invisible" value="{{$producto['precio']}}">
-                    <button type="submit" class="btn btn-primary">Comprar Producto</button>
-                    {{ csrf_field() }}
-                </form>
+
             </div>
             @endforeach
         </div>
 
     </div>
-
-    <button onclick="abrirmenu()" id="botonañadir">Añadir Producto
-        </button>
-        <div class="añadirproducto">
-            <form method="POST" action="/nuevoproducto" enctype="multipart/form-data">
-
-                <div class="form-group">
-                    <label>nombre</label>
-                    <input type="text" name="nombre" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>descripcion</label>
-                    <input type="text" name="descripcion" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>precio</label>
-                    <input type="number" name="precio" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>stock</label>
-                    <input type="number" name="stock" class="form-control" />
-                </div>
-
-                <div class="form-group">
-                    <label>Imagen Producto</label>
-                    <input type="file" name="file" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Create Producto</button>
-                </div>
-                {{ csrf_field() }}
-            </form>
-
-        </div>
 
     <footer class="page-footer" style="background-color: #272626;">
         <div class="container">

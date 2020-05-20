@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-use Pixeloution\Random\Randomizer;
+//use Pixeloution\Random\Randomizer;
 
 # takes a partial User Agent as an argument; random.org requests you use your
 # email address in case of issues
-$generator = new Randomizer( 'yourfarrukito@gmail.com' );
+//$generator = new Randomizer( 'yourfarrukito@gmail.com' );
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +83,9 @@ Route::get('/random' , function(){
 });
 
 
+Route::post('/compras', 'ProductoController@crearProducto2');
+Route::post('/nuevoproducto','ProductoController@crearProducto');
+Route::get('/productoscomprados', 'ProductoController@compras');
 
 
 

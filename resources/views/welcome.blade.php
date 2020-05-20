@@ -48,7 +48,7 @@
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <a href="/">
+                    <a href="/welcome">
                         <i class="material-icons">home</i>
                         BINGO CITIES
                     </a>
@@ -69,7 +69,7 @@
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <a href="#">
+                    <a href="/productoscomprados">
                         <i class="material-icons">shopping_cart</i>
                         MIS COMPRAS
                     </a>
