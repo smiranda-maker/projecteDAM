@@ -17,16 +17,19 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('nombre',20);
             $table->string('apellidos',50);
-            $table->string('email',50)->unique();
+            $table->string('email',50)->unique()->require();
             $table->string('nickname',15)->unique();
             $table->string('password');
             $table->integer('fichas')->default(1000);
             $table->integer('rank')->nullable();
+            $table->string('direccion')->nullable();
             $table->boolean('admin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
+       
     }
 
     /**

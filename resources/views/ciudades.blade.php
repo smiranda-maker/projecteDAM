@@ -92,7 +92,7 @@
 
     <div class="black" style=" position: relative;z-index: 3;">
         <div class="container section" style="padding: 1.5%; ">
-            <a href="#" class="brand-logo orange-text text-lighten-2" style="font-size: 28px;"> Bingo</a>
+            <a href="/welcome" class="brand-logo orange-text text-lighten-2" style="font-size: 28px;"> Bingo</a>
             <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons orange-text text-lighten-2">menu</i></a>
 
             <ul class="sidenav" id="menu-side">

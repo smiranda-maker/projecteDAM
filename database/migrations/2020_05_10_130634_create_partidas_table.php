@@ -18,6 +18,10 @@ class CreatePartidasTable extends Migration
             $table->BigInteger('ciudad_id')->unsigned();
             $table->date('fechaEmpieza');
             $table->string('numerosQueHanSalido');
+            $table->boolean('linea')->default(false);
+            $table->boolean('bingo')->default(false);
+            $table->string('diagonal')->default(false);
+
             $table->foreign('ciudad_id')->references('id')->on('ciudads');
             $table->timestamps();
         });

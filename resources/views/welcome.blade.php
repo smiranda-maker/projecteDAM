@@ -21,7 +21,7 @@
 <body>
     <div class="black">
         <div class="container section" style="padding: 1.5%; ">
-            <a href="#" class="logo-nav" style="font-size: 28px;"> BINGO CITIES</a>
+            <a href="/welcome" class="logo-nav" style="font-size: 28px;"> BINGO CITIES</a>
             <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons orange-text text-lighten-2">menu</i></a>
 
             <ul class="sidenav" id="menu-side">
@@ -36,10 +36,11 @@
                         </a>
                         <a href="#">
                             <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
-                        </a>
+                        </a>    
+                                                                                                       
                         <a href="#">
                             <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
-                        </a>
+                        </a>                                                                                               
 
                     </div>
                    
@@ -54,7 +55,7 @@
                 </li>
                 <div class="divider"></div>
                 <li>
-                    <a href="#">
+                    <a href="/ciudades">
                         <i class="material-icons">videogame_asset</i>
                         SALAS
                     </a>
