@@ -40,6 +40,15 @@ Route::get('/productos', function () {
 //Route::get('/productos','ProductoController@productos');
 
 Auth::routes();
+/*Prueba ciudades */
+Route::get('/ciudades', function () {
+    return view('ciudades');
+});
+
+/*Prueba preloader */
+Route::get('/carga', function () {
+    return view('preloader');
+});
 
 Route::get('/todosproductos', 'ProductoController@todoslosproductos');
 
