@@ -38,10 +38,14 @@
                             <img src="icn.png" alt="" class="circle">
                         </a>
                         <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">{{ auth()->user()->nombre }}</span>
+                        </a>
+
+                        <a href="#">
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->email }}</span>
                         </a>
                         <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->fichas }}</span>
                         </a>
 
                     </div>
@@ -76,7 +80,7 @@
                         COMPRAS
                     </a>
                 </li>
-                
+
 
             </ul>
         </div>

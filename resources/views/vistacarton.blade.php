@@ -1,23 +1,58 @@
+<style>
+    .cartones {
+        width: 70%;
+        margin-left: 15%;
+        display: grid;
+        grid-template-columns: 30% 30%;
+    }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{$carton}}
+    .numeros {
+      
+        display: flex;
+    }
+
+    .restantes {
+        background-color: green;
+    }
+
+    .numero {
+        padding: 2%;
+        border: 1px solid black;
+
+    }
+
+    .filas {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        margin-left: 5%;
+        border: solid 1px black;
+        width: 30%;
+
+    }
+</style>
+
+<div class="cartones">
+
+    <div class="carton">
+        <div class="restantes">
+            <p>te quedan 7 numeros</p>
+        </div>
+        <div class="numeros">
+            @foreach($numerossplit as $n)
+            <div class="filas">
+
+                @foreach(explode(',', $n['numeros']) as $row)
+                <p class="numero">{{ $row }}</p>
+                @endforeach
+            </div>
+
+            @endforeach
 
 
-    <div class="container">
-       split("-",{{$carton}},3)
 
-        {{$carton}}
+        </div>
+
+
     </div>
- 
 
-
-    
-</body>
-</html>
+</div>

@@ -35,15 +35,18 @@
                             <img src="icn.png" alt="" class="circle">
                         </a>
                         <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
-                        </a>    
-                                                                                                       
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">{{ auth()->user()->nombre }}</span>
+                        </a>
+
                         <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
-                        </a>                                                                                               
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->email }}</span>
+                        </a>
+                        <a href="#">
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->fichas }}</span>
+                        </a>
 
                     </div>
-                   
+
 
                 </li>
                 <div class="divider"></div>
@@ -74,6 +77,17 @@
                         MIS COMPRAS
                     </a>
                 </li>
+                @if (Auth::check())
+
+                <div class="divider"></div>
+                <li>
+                    <a href="/logout">
+                        <i class="material-icons">shopping_cart</i>
+                        LOGOUt
+                    </a>
+                </li>
+                @endif
+
 
             </ul>
         </div>

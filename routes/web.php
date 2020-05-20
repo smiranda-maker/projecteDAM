@@ -87,5 +87,8 @@ Route::post('/compras', 'ProductoController@crearProducto2');
 Route::post('/nuevoproducto','ProductoController@crearProducto');
 Route::get('/productoscomprados', 'ProductoController@compras');
 
+Route::get('/vistacarton', 'PartidaController@numeros');
+Route::post('/crearcartones', 'PartidaController@crearcartones');
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

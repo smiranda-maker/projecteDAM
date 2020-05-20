@@ -38,11 +38,14 @@
                             <img src="icn.png" alt="" class="circle">
                         </a>
                         <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">{{ auth()->user()->nombre }}</span>
                         </a>
 
                         <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->email }}</span>
+                        </a>
+                        <a href="#">
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->fichas }}</span>
                         </a>
 
                     </div>
@@ -116,7 +119,7 @@
                 </div>
             </div>
         </div>
-      
+
         <div class="row">
             <div class="col s12">
 
@@ -160,39 +163,39 @@
     </div>
 
     <button onclick="abrirmenu()" id="botonañadir">Añadir Producto
-        </button>
-        <div class="añadirproducto">
-            <form method="POST" action="/nuevoproducto" enctype="multipart/form-data">
+    </button>
+    <div class="añadirproducto">
+        <form method="POST" action="/nuevoproducto" enctype="multipart/form-data">
 
-                <div class="form-group">
-                    <label>nombre</label>
-                    <input type="text" name="nombre" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>descripcion</label>
-                    <input type="text" name="descripcion" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>precio</label>
-                    <input type="number" name="precio" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>stock</label>
-                    <input type="number" name="stock" class="form-control" />
-                </div>
+            <div class="form-group">
+                <label>nombre</label>
+                <input type="text" name="nombre" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>descripcion</label>
+                <input type="text" name="descripcion" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>precio</label>
+                <input type="number" name="precio" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>stock</label>
+                <input type="number" name="stock" class="form-control" />
+            </div>
 
-                <div class="form-group">
-                    <label>Imagen Producto</label>
-                    <input type="file" name="file" class="form-control">
-                </div>
+            <div class="form-group">
+                <label>Imagen Producto</label>
+                <input type="file" name="file" class="form-control">
+            </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Create Producto</button>
-                </div>
-                {{ csrf_field() }}
-            </form>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create Producto</button>
+            </div>
+            {{ csrf_field() }}
+        </form>
 
-        </div>
+    </div>
 
     <footer class="page-footer" style="background-color: #272626;">
         <div class="container">

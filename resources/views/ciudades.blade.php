@@ -66,7 +66,7 @@
 
         }
 
-        .numCartones button {
+        .numCartones .nice-number button {
 
             background: rgba(32, 124, 229, 1) !important;
             /*background: rgba(32,124,229,1)*/
@@ -82,7 +82,7 @@
             font-size: 28px;
         }
 
-        .numCartones button:hover {
+        .numCartones .nice-number button:hover {
             background: rgba(73, 155, 234, 1) !important;
             box-shadow: 0 2px 5px rgba(0, 0, 0, .5) !important;
         }
@@ -93,7 +93,7 @@
 
 <body>
 
-   
+
 
 
     <div id="fullPage">
@@ -117,18 +117,24 @@
         </div>
 
         <div class="section s2">
-            <h1 class="neon" data-text="Los Angeles"> Los Angeles</h1>
-            <a href="#" id="btn1">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Buscar Partida</a>
-
             <div class="numCartones">
                 <p>indica el numero de cartones:</p>
-                <input class="in" type="number" value="1">
+                <form method="POST" action="/crearcartones" enctype="multipart/form-data">
+                    <input class="in" type="number" value="1" name="cartones">
+                    <button type="submit" id="btn1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Comprar Producto</button>
+                    {{ csrf_field() }}
+                </form>
+
             </div>
+            <h1 class="neon" data-text="Los Angeles"> Los Angeles</h1>
+
+
+
 
         </div>
 
