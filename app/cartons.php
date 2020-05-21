@@ -8,6 +8,6 @@ class cartons extends Model
 {
     //
     protected $fillable = [
-        'id', 'partida_id', 'user_id','numeros','create_at','update_at'
+        'id', 'partida_id', 'user_id','numeros','precio','create_at','update_at'
     ];
 }

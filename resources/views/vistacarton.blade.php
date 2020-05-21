@@ -7,7 +7,7 @@
     }
 
     .numeros {
-      
+
         display: flex;
     }
 
@@ -48,11 +48,22 @@
 
             @endforeach
 
-
-
         </div>
+
+
+        <p class="numero">{{ $numerossplit1 }}</p>
 
 
     </div>
 
+
+
+
 </div>
+<script type="text/javascript">
+    function contador() {
+        const user = json($numerossplit1);
+        console.log(user);
+    }
+    setInterval('contador()', 2000);
+</script>
