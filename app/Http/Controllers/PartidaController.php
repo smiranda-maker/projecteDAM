@@ -66,7 +66,6 @@ class PartidaController extends Controller
 
     public function crearcartones(Request $Request){
 
-
         $user = Auth::user();
         $count =0;
         $countnumeros=0;
@@ -78,10 +77,10 @@ class PartidaController extends Controller
         while($count<$Request->cartones){
         $cartones = new Carton();
 
-        //Recibimos la ulitma partida que se ha creado en esa ciudad
+        //Recibimos la ultima partida que se ha creado en esa ciudad
         $partida=Partida::join('ciudads','ciudad_id','=','ciudads.id')
         ->select('partidas.id')
-        ->where('ciudad_id','=',1)
+        ->where('ciudad_id','=',$Request->idciudad)
         ->orderby('partidas.id','desc')
         ->first();
 
