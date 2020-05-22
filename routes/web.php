@@ -79,6 +79,6 @@ Route::get('/productoscomprados', 'ProductoController@compras');
 
 Route::get('/vistacarton', 'PartidaController@numeros');
 Route::post('/crearcartones', 'PartidaController@crearcartones');
-
+Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

@@ -1,3 +1,24 @@
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        function changeNumber() {
+            value = $('#value').text();
+            $.ajax({
+                type: "GET",
+                url: "/numerosquehansalido",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: true,
+                success: function(data) {
+                    $('#value').text(data['data']);
+                }
+            });
+        }
+       
+        setInterval(changeNumber, 3000);
+    });
+</script>
 <style>
     .cartones {
         width: 70%;
@@ -31,6 +52,7 @@
     }
 </style>
 
+
 <div class="cartones">
 
     <div class="carton">
@@ -51,19 +73,7 @@
         </div>
 
 
-        <p class="numero">{{ $numerossplit1 }}</p>
-
-
+        <p class="numero"><span id="value"></span>  
     </div>
-
-
-
-
 </div>
-<script type="text/javascript">
-    function contador() {
-        const user = json($numerossplit1);
-        console.log(user);
-    }
-    setInterval('contador()', 2000);
-</script>
+
