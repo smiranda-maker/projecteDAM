@@ -12,6 +12,7 @@ class PartidaController extends Controller
     // 
 
     //Funcion que genera 3 partidas, 1 en cada ciudad.
+    //Todas empiezan a la hora del servidor (cambiar eso)
     public function generarPartidas(){
 
         //Si la segunda falla la primera se creerá igualmente,
@@ -41,9 +42,8 @@ class PartidaController extends Controller
 
 
 
-
-    public function numeros()
-    {   $user = Auth::user();
+    public function numeros(){
+        $user = Auth::user();
         $partidasdatos=Partida::all();
         $carton  = DataBase::table('cartons')-> where('user_id', $user->id)->get();
         $numerossplit = array();
@@ -64,6 +64,8 @@ class PartidaController extends Controller
 
     }
 
+
+    //Función que crea cartones
     public function crearcartones(Request $Request){
 
         $user = Auth::user();
