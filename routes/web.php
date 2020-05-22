@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Partida;
 
 //use Pixeloution\Random\Randomizer;
 
@@ -54,19 +55,6 @@ Route::get('/todosproductos', 'ProductoController@todoslosproductos');
 
 Route::get('/random' , function(){
 
-    // $carton=array();
-
-    // for ($i=0; $i <9; $i++) {
-    //     array_push($carton,rand(1,100));
-    // }
-
-    // return $carton;
-
-    // $numbers = range(1, 100);
-    // shuffle($numbers);
-    // return $numbers;
-
-
     //Generamos un array de 9 numeros no repetidos del 1 al 100 incluidos. 
     $cont=0;
     $carton=array();
@@ -82,6 +70,8 @@ Route::get('/random' , function(){
       return view('vistacarton',compact('carton'));
 });
 
+//Esta funcion se tendrá que hacer automaticamente, crea 3 partidas
+Route::get('/generarPartidas', 'PartidaController@generarPartidas');
 
 Route::post('/compras', 'ProductoController@crearProducto2');
 Route::post('/nuevoproducto','ProductoController@crearProducto');

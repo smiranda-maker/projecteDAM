@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Producto;
-use App\compras;
+use App\Compra;
 use App\User;
 class ProductoController extends Controller
 {
@@ -79,7 +79,7 @@ class ProductoController extends Controller
             $monedas = $user->fichas;
         }
         User::where('id', $user->id)->update(['fichas' => $monedas - $Request->precio]);
-        $producto = new compras();
+        $producto = new Compra();
         $producto->producto_id = $Request->producto_id;
         $producto->user_id = $user->id;
         $producto->fecha  = date('Y-m-d H:i:s');

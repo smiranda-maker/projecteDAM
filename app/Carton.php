@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cartons extends Model
+class Carton extends Model
 {
     //
     protected $fillable = [

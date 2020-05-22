@@ -100,27 +100,30 @@
 
 
         <div class="section s1">
-            <h1 class="neon" data-text="New York"> New York</h1>
-            <a href="#" id="btn1">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Buscar Partida</a>
-
-            <div class="numCartones">
-                <p>indica el numero de cartones:</p>
-                <input class="in" type="number" value="1">
-            </div>
-
-
-        </div>
-
-        <div class="section s2">
+        <h1 class="neon" data-text="Madrid">Madrid</h1>
             <div class="numCartones">
                 <p>indica el numero de cartones:</p>
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
                     <input class="in" type="number" value="1" name="cartones">
+                    <input class="in" type="hidden" value="1" name="idciudad">
+                    <button type="submit" id="btn1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Comprar Producto</button>
+                    {{ csrf_field() }}
+                </form>
+            </div>
+        </div>
+
+        <div class="section s2">
+        <h1 class="neon" data-text="Dubai">Dubai</h1>
+            <div class="numCartones">
+                <p>indica el numero de cartones:</p>
+                <form method="POST" action="/crearcartones" enctype="multipart/form-data">
+                    <input class="in" type="number" value="1" name="cartones">
+                    <input class="in" type="hidden" value="2" name="idciudad">
                     <button type="submit" id="btn1">
                         <span></span>
                         <span></span>
@@ -131,27 +134,24 @@
                 </form>
 
             </div>
-            <h1 class="neon" data-text="Los Angeles"> Los Angeles</h1>
-
-
-
-
         </div>
 
         <div class="section s3">
-            <h1 class="neon" data-text="Madrid"> Madrid</h1>
-            <a href="#" id="btn1">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Buscar Partida</a>
-
+        <h1 class="neon" data-text="Las Vegas">Las Vegas</h1>
             <div class="numCartones">
-                <p>indica el numero de cartones:</p>
-                <input class="in" type="number" value="1">
+            <p>indica el numero de cartones:</p>
+                <form method="POST" action="/crearcartones" enctype="multipart/form-data">
+                    <input class="in" type="number" value="1" name="cartones">
+                    <input class="in" type="hidden" value="3" name="idciudad">
+                    <button type="submit" id="btn1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Comprar Producto</button>
+                    {{ csrf_field() }}
+                </form>
             </div>
-
         </div>
 
 
