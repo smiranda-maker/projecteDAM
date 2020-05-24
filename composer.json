@@ -15,7 +15,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "pixeloution/true-random" : "*" 
+        "nesbot/carbon": "^2.34",
+        "pixeloution/true-random": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

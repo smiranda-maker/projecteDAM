@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Partida;
+use App\Carton;
+
 
 //use Pixeloution\Random\Randomizer;
 
@@ -53,22 +55,6 @@ Route::get('/carga', function () {
 
 Route::get('/todosproductos', 'ProductoController@todoslosproductos');
 
-Route::get('/random' , function(){
-
-    //Generamos un array de 9 numeros no repetidos del 1 al 100 incluidos. 
-    $cont=0;
-    $carton=array();
-    while ($cont<9) {
-        $num_aleatorio = rand(1,100);
-        if (!in_array($num_aleatorio,$carton)) {
-          array_push($carton,$num_aleatorio);
-          $cont++;
-        }
-      }
-      //Convertimos el array en un string separando los valores con un guión '-'
-      $carton=implode("-",$carton);
-      return view('vistacarton',compact('carton'));
-});
 
 //Esta funcion se tendrá que hacer automaticamente, crea 3 partidas
 Route::get('/generarPartidas', 'PartidaController@generarPartidas');
@@ -77,8 +63,23 @@ Route::post('/compras', 'ProductoController@crearProducto2');
 Route::post('/nuevoproducto','ProductoController@crearProducto');
 Route::get('/productoscomprados', 'ProductoController@compras');
 
+
+Route::get('/numerosAPartida',function(){
+
+          //Miramos en la tabla carton en que partida ha comprado
+          //su ultimo cartón
+
+          $partidasdatos=Carton::select('partida_id')
+          ->where('user_id','=',Auth::user()->id)
+          ->orderby('partida_id','desc')
+          ->first();
+
+          return $partidasdatos->partida_id;
+
+});
+
 Route::get('/vistacarton', 'PartidaController@numeros');
 Route::post('/crearcartones', 'PartidaController@crearcartones');
-
+Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
