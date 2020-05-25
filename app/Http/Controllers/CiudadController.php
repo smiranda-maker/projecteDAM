@@ -12,13 +12,10 @@ class CiudadController extends Controller
 {
     //
 
-
     //Devuelve todas las ciudades
     public function ciudades(){
-    
         $ciudades=Ciudad::all();
         return $ciudades;
-        
     }
 
     //Pruebas para comprobar el funcionamiento del random

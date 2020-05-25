@@ -1,0 +1,11 @@
+.collapsible {
+    display: flex;
+    margin-left: 20%;
+    width: 60%;
+}
+
+.collapsible-header {
+    width: 115%;
+    background: none;
+    border-bottom: none;
+}
