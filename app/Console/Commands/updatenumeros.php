@@ -40,14 +40,14 @@ class updatenumeros extends Command
     public function handle()
     {
         $numeronuevo = rand(1,99);
-        $partidas  = DataBase::table('partidas')->where('id', 4)->get();
+        $partidas  = DataBase::table('partidas')->where('id','=', 1)->get();
+
         foreach ($partidas as $ca) {
             $numerossplit1 = $ca->numerosQueHanSalido;
-            
         }
-        
 
-        Partida::where('id', 1)->update(['numerosQueHanSalido' => $numerossplit1.",".$numeronuevo]);
+
+        Partida::where('id','=', 1)->update(['numerosQueHanSalido' => $numerossplit1.",".$numeronuevo]);
 
     }
 }

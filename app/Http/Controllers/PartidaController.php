@@ -154,6 +154,26 @@ class PartidaController extends Controller
         return response()->json(['data' => $partidasdatos->numerosQueHanSalido]);
         
     }
+
+    public function ultimonumero(){
+
+        $partidaActual=Carton::select('partida_id')
+        ->where('user_id','=',Auth::user()->id)
+        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
+        ->orderby('id','desc')
+        ->first();
+
+        //En esa partida es donde enviaremos los numeros.
+        $partidasdatos=Partida::findOrFail($partidaActual->partida_id);
+        foreach(explode(',', $partidasdatos['numerosQueHanSalido']) as $row){
+            $ultimonumero = $row;
+        }
+
+
+
+        return response()->json(['data' => $ultimonumero]);
+        
+    }
     
    
 }
