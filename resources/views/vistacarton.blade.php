@@ -11,7 +11,7 @@
                 },
                 async: true,
                 success: function(data) {
-                    $('#value').text(data['data']);
+                    $('#value').text(data['data']); 
                 }
             });
         }
@@ -64,7 +64,7 @@
             <div class="filas">
 
                 @foreach(explode(',', $n['numeros']) as $row)
-                <p class="numero">{{ $row }}</p>
+                <p class="numero{{ $row }}">{{ $row }}</p>
                 @endforeach
             </div>
 
