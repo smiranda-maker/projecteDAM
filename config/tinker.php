@@ -15,6 +15,7 @@ return [
 
     'commands' => [
         App\Console\Commands\updatenumeros::class,
+        App\Console\Commands\revisionbingo::class,
     ],
 
     /*

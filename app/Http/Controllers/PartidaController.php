@@ -87,23 +87,8 @@ class PartidaController extends Controller
             $count++;
         }
 
-        /********** */
-        $partidaActual=Carton::select('partida_id')
-        ->where('user_id','=',Auth::user()->id)
-        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
-        ->orderby('id','desc')
-        ->first();
-
-        
-
-        //En esa partida es donde enviaremos los numeros.
-        $countnumeros=0;
-        $partidasdatos=Partida::findOrFail($partidaActual->partida_id);
-        foreach(explode(',', $partidasdatos['numerosQueHanSalido']) as $row){
-            $numerosadevolver[$countnumeros]['numero'] = $row;
-            $countnumeros ++;
-        }
-        return view('/vistacarton', compact('numerossplit','numerossplit1','numerosadevolver'));
+       
+        return view('/vistacarton', compact('numerossplit','numerossplit1'));
 
     }
 

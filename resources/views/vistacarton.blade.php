@@ -26,11 +26,10 @@
                 async: true,
                 success: function(data) {
                     var elem = document.getElementById(data['data']);
+                    $('#value').text(data['data']);
+                    console.log(elem);
                     if (elem != null) {
                         elem.style.background = "red";
-                        $('#value').text(data['data']);
-                        $("#tabla-numeros-mostrado").append("<p>"+val+"</p>")
-
                     }
                 }
             });
@@ -38,7 +37,6 @@
 
         }
 
-        function separarnumeros() {
             $.ajax({
                 type: "GET",
                 url: "/numerosquehansalido",
@@ -60,7 +58,7 @@
 
                 }
             });
-        }
+        
 
         $.ajax({
             type: "GET",
@@ -82,7 +80,6 @@
 
 
         //setInterval(changeNumber, 3000);
-        setInterval(separarnumeros, 3000);
         setInterval(marcarnumero, 3000);
     });
 </script>
