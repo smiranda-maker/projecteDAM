@@ -86,8 +86,24 @@ class PartidaController extends Controller
             $numerossplit[$count]['numeros'] = $c->numeros;
             $count++;
         }
+
+        /********** */
+        $partidaActual=Carton::select('partida_id')
+        ->where('user_id','=',Auth::user()->id)
+        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
+        ->orderby('id','desc')
+        ->first();
+
         
-        return view('/vistacarton', compact('numerossplit','numerossplit1'));
+
+        //En esa partida es donde enviaremos los numeros.
+        $countnumeros=0;
+        $partidasdatos=Partida::findOrFail($partidaActual->partida_id);
+        foreach(explode(',', $partidasdatos['numerosQueHanSalido']) as $row){
+            $numerosadevolver[$countnumeros]['numero'] = $row;
+            $countnumeros ++;
+        }
+        return view('/vistacarton', compact('numerossplit','numerossplit1','numerosadevolver'));
 
     }
 
@@ -172,6 +188,27 @@ class PartidaController extends Controller
 
 
         return response()->json(['data' => $ultimonumero]);
+        
+    }
+
+    public function numerosparamostrar(){
+
+        $partidaActual=Carton::select('partida_id')
+        ->where('user_id','=',Auth::user()->id)
+        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
+        ->orderby('id','desc')
+        ->first();
+
+        
+
+        //En esa partida es donde enviaremos los numeros.
+        $count=0;
+        $partidasdatos=Partida::findOrFail($partidaActual->partida_id);
+        foreach(explode(',', $partidaActual['numerosQueHanSalido']) as $row){
+            $partidasdatos[$count]['numero'] = $row;
+            $count ++;
+        }
+        return view('/vistacarton', compact('partidasdatos'));
         
     }
     
