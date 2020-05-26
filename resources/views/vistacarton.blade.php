@@ -29,7 +29,8 @@
                     $('#value').text(data['data']);
                     console.log(elem);
                     if (elem != null) {
-                        elem.style.background = "red";
+                        console.log(data['data']);
+                        $("."+data['data']).addClass("important");
                     }
                 }
             });
@@ -49,10 +50,11 @@
                     separadores = [','];
                     textoseparado = res.split(new RegExp(separadores.join('|'), 'g'));
                     jQuery.each(textoseparado, function(i, val) {
+
                         var elem = document.getElementById(val);
                         if (elem != null) {
-                            console.log(elem);
-                            elem.style.background = "red";
+                            console.log("."+val);
+                            $("."+val).addClass("important");
                         }
                     });
 
@@ -83,6 +85,11 @@
         setInterval(marcarnumero, 3000);
     });
 </script>
+<style>
+.important {
+ background: red;
+}
+</style>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -140,7 +147,7 @@
                 </div>
                 <div class="numeros">
                     @foreach(explode(',', $n['numeros']) as $row)
-                    <p class="numero" id="{{ $row }}">{{ $row }}</p>
+                    <p class="numero {{ $row }}">{{ $row }}</p>
                     @endforeach
                 </div>
 

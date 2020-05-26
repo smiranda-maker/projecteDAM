@@ -49,6 +49,8 @@ class PartidaController extends Controller
 
 
 
+    //Funcion que devuelve los numeros de los cartones
+    //de la partida en la que te encuentras.
     public function numeros(){
         
         $user = Auth::user();
@@ -60,21 +62,10 @@ class PartidaController extends Controller
         //su ultimo cartón, recibimos ID DE LA PARTIDA en la que está
         $partidaActual=Carton::select('partida_id')
         ->where('user_id','=',Auth::user()->id)
-        //importante ordenar por id de carton y no por partida_id (fallo que dio problemas)
+        //importante ordenar por id de carton y no por partida_id
         ->orderby('id','desc')
         ->first();
 
-        //En esa partida es donde enviaremos los numeros.
-        $partidasdatos=Partida::findOrFail($partidaActual->partida_id);
-        
-
-        //Miramos los números de la partida que por defecto sera nulo, no tiene numeros..
-        $numerossplit1 =$partidasdatos->numerosQueHanSalido;
-
-        // foreach($partidasdatos as $ca){
-        //      $partidasdatos= $ca->numerosQueHanSalido;
-        //     $count1++;
-        // }
 
         //Pido todos los cartones de ese usuario en esa partida y las muestro.
         $carton  = DataBase::table('cartons')-> where('user_id', $user->id)
@@ -89,6 +80,23 @@ class PartidaController extends Controller
 
        
         return view('/vistacarton', compact('numerossplit','numerossplit1'));
+        /********** */
+        $partidaActual=Carton::select('partida_id')
+        ->where('user_id','=',Auth::user()->id)
+        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
+        ->orderby('id','desc')
+        ->first();
+
+        
+
+        //En esa partida es donde enviaremos los numeros.
+        $countnumeros=0;
+        $partidasdatos=Partida::findOrFail($partidaActual->partida_id);
+        foreach(explode(',', $partidasdatos['numerosQueHanSalido']) as $row){
+            $numerosadevolver[$countnumeros]['numero'] = $row;
+            $countnumeros ++;
+        }
+        return view('/vistacarton', compact('numerossplit','numerosadevolver'));
 
     }
 
@@ -141,11 +149,12 @@ class PartidaController extends Controller
         return redirect('/vistacarton');
     }
 
+    //Funcion que llama a la partida actual y 'canta' numeros
     public function numerosmostrados(){
 
         $partidaActual=Carton::select('partida_id')
         ->where('user_id','=',Auth::user()->id)
-        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
+        //importante ordenar por id de carton y no por partida_id (fallo que dio problemas)
         ->orderby('id','desc')
         ->first();
 
@@ -156,6 +165,7 @@ class PartidaController extends Controller
         
     }
 
+    
     public function ultimonumero(){
 
         $partidaActual=Carton::select('partida_id')
