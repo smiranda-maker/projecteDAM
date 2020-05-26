@@ -11,19 +11,10 @@
                 },
                 async: true,
                 success: function(data) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    $('#value').text(data['data']); 
-=======
-                     $('#value').text(data['data']);
->>>>>>> 0f16444441e3a6faf3aa268f5885a522134a9c1e
-=======
                     $('#value').text(data['data']);
->>>>>>> 3a420e8b5f26949dac396177436c6de292562b83
                 }
             });
         }*/
-
         function marcarnumero() {
             $.ajax({
                 type: "GET",
@@ -33,43 +24,27 @@
                 },
                 async: true,
                 success: function(data) {
-                    var elem = document.getElementById(data['data']);
-                    if (elem != null) {
-                        elem.style.background = "red";
-                        $('#value').text(data['data']);
-                        $("#tabla-numeros-mostrado").append("<p>"+val+"</p>")
-
-                    }
-                }
-            });
-
-
-        }
-
-        function separarnumeros() {
-            $.ajax({
-                type: "GET",
-                url: "/numerosquehansalido",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                async: true,
-                success: function(data) {
-                    var res = data['data'];
-                    separadores = [','];
-                    textoseparado = res.split(new RegExp(separadores.join('|'), 'g'));
-                    jQuery.each(textoseparado, function(i, val) {
-                        var elem = document.getElementById(val);
-                        if (elem != null) {
-                            console.log(elem);
-                            elem.style.background = "red";
-                        }
-                    });
-
+                    $('#value').text(data['data']);
+                    $("." + data['data']).addClass("important");
                 }
             });
         }
-
+        $.ajax({
+            type: "GET",
+            url: "/numerosquehansalido",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: true,
+            success: function(data) {
+                var res = data['data'];
+                separadores = [','];
+                textoseparado = res.split(new RegExp(separadores.join('|'), 'g'));
+                jQuery.each(textoseparado, function(i, val) {
+                    $("." + val).addClass("important");
+                });
+            }
+        });
         $.ajax({
             type: "GET",
             url: "/numerosquehansalido",
@@ -84,16 +59,36 @@
                 jQuery.each(textoseparado, function(i, val) {
                     $("#tabla-numeros-mostrado").append("<p>" + val + "</p>")
                 });
-
             }
         });
-
-
-        //setInterval(changeNumber, 3000);
-        setInterval(separarnumeros, 3000);
+        function Bingo() {
+            $.ajax({
+                type: "GET",
+                url: "/ganador",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: true,
+                success: function(data) {
+                    if(data['data']!=0){
+                        $('#ganador').text("Ganador de Bingo: "+ data['data']);
+                    }
+                }
+            });
+        }
+        setInterval(Bingo, 3000);
         setInterval(marcarnumero, 3000);
     });
 </script>
+<style>
+    .important {
+        background: red;
+    }
+    #ganador{
+        color: green;
+        font-family: 40px;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -135,11 +130,9 @@
             </div>
         </div>
 
-                @foreach(explode(',', $n['numeros']) as $row)
-                <p class="numero{{ $row }}">{{ $row }}</p>
-
-                <p class="numero" id="{{ $row }}">{{ $row }}</p>
-                @endforeach
+    </div>
+    <div>
+        <span id="ganador"></span>
 
     </div>
 
@@ -157,7 +150,7 @@
                 </div>
                 <div class="numeros">
                     @foreach(explode(',', $n['numeros']) as $row)
-                    <p class="numero" id="{{ $row }}">{{ $row }}</p>
+                    <p class="numero {{ $row }}">{{ $row }}</p>
                     @endforeach
                 </div>
 
@@ -243,21 +236,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
-
-
-
         });
-
         function cerrar() {
             document.getElementById("modal").style.display = "none";
             document.getElementById("modal").style.top = "1000px";
             document.getElementsByTagName("html")[0].style.overflow = "auto";
         }
-
-
         function mostrar() {
             document.getElementById("modal").style.display = "flex";
             document.getElementById("modal").style.top = "0px";
