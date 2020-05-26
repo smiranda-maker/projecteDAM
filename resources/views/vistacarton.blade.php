@@ -11,12 +11,57 @@
                 },
                 async: true,
                 success: function(data) {
+<<<<<<< HEAD
                     $('#value').text(data['data']); 
+=======
+                     $('#value').text(data['data']);
+>>>>>>> 0f16444441e3a6faf3aa268f5885a522134a9c1e
                 }
             });
         }
-       
+
+        function marcarnumero() {
+            $.ajax({
+                type: "GET",
+                url: "/ultimonumero",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: true,
+                success: function(data) {
+                    var elem = document.getElementById(data['data']);
+                    elem.style.background = "red";
+                }
+            });
+        }
+
+        function separarnumeros() {
+            $.ajax({
+                type: "GET",
+                url: "/numerosquehansalido",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: true,
+                success: function(data) {
+                    var res = data['data'];
+                    separadores = [','];
+                    textoseparado = res.split(new RegExp(separadores.join('|'), 'g'));
+                    jQuery.each(textoseparado, function(i, val) {
+                        var elem = document.getElementById(val);
+                        if (elem != null) {
+                            console.log(elem);
+                            elem.style.background = "red";
+                        }
+                    });
+
+                }
+            });
+        }
+
         setInterval(changeNumber, 3000);
+        setInterval(separarnumeros, 3000);
+        setInterval(marcarnumero, 3000);
     });
 </script>
 <style>
@@ -52,7 +97,7 @@
     }
 </style>
 
-
+    
 <div class="cartones">
 
     <div class="carton">
@@ -64,7 +109,11 @@
             <div class="filas">
 
                 @foreach(explode(',', $n['numeros']) as $row)
+<<<<<<< HEAD
                 <p class="numero{{ $row }}">{{ $row }}</p>
+=======
+                <p class="numero" id="{{ $row }}">{{ $row }}</p>
+>>>>>>> 0f16444441e3a6faf3aa268f5885a522134a9c1e
                 @endforeach
             </div>
 
@@ -73,7 +122,6 @@
         </div>
 
 
-        <p class="numero"><span id="value"></span>  
+        <p class="numero"><span id="value"></span>
     </div>
 </div>
-

@@ -8,6 +8,14 @@ class Partida extends Model
 {
     //
     protected $fillable = [
-        'id', 'ciudad_id', 'fechaEmpieza', 'numerosQueHanSalido', 'linea', 'bingo', 'diagonal', 'created_at', 'updated_at'
+        'id', 'ciudad_id', 'fechaEmpieza', 'numerosQueHanSalido', 'idcarton_linea', 'idcarton_bingo', 'idcarton_diagonal', 'created_at', 'updated_at'
     ];
+
+
+    // public function cartons(){
+    //     return $this->hasMany(Carton::class);
+    // }
+
+
+
 }
