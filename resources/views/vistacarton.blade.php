@@ -25,42 +25,36 @@
                 },
                 async: true,
                 success: function(data) {
-                    var elem = document.getElementById(data['data']);
                     $('#value').text(data['data']);
-                    console.log(elem);
-                    if (elem != null) {
-                        console.log(data['data']);
-                        $("."+data['data']).addClass("important");
-                    }
+
+                    $("." + data['data']).addClass("important");
+
                 }
             });
 
 
         }
 
-            $.ajax({
-                type: "GET",
-                url: "/numerosquehansalido",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                async: true,
-                success: function(data) {
-                    var res = data['data'];
-                    separadores = [','];
-                    textoseparado = res.split(new RegExp(separadores.join('|'), 'g'));
-                    jQuery.each(textoseparado, function(i, val) {
+        $.ajax({
+            type: "GET",
+            url: "/numerosquehansalido",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: true,
+            success: function(data) {
+                var res = data['data'];
+                separadores = [','];
+                textoseparado = res.split(new RegExp(separadores.join('|'), 'g'));
+                jQuery.each(textoseparado, function(i, val) {
 
-                        var elem = document.getElementById(val);
-                        if (elem != null) {
-                            console.log("."+val);
-                            $("."+val).addClass("important");
-                        }
-                    });
+                    $("." + val).addClass("important");
 
-                }
-            });
-        
+                });
+
+            }
+        });
+
 
         $.ajax({
             type: "GET",
@@ -80,15 +74,37 @@
             }
         });
 
+        function Bingo() {
+            $.ajax({
+                type: "GET",
+                url: "/ganador",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: true,
+                success: function(data) {
+                    if(data['data']!=0){
+                        $('#ganador').text("Ganador de Bingo: "+ data['data']);
+                    }
 
-        //setInterval(changeNumber, 3000);
+                }
+            });
+
+
+        }
+
+        setInterval(Bingo, 3000);
         setInterval(marcarnumero, 3000);
     });
 </script>
 <style>
-.important {
- background: red;
-}
+    .important {
+        background: red;
+    }
+    #ganador{
+        color: green;
+        font-family: 40px;
+    }
 </style>
 <!DOCTYPE html>
 <html lang="es">
@@ -130,6 +146,10 @@
                 </div>
             </div>
         </div>
+
+    </div>
+    <div>
+        <span id="ganador"></span>
 
     </div>
 

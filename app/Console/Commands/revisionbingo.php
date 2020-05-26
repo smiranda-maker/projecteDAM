@@ -41,46 +41,37 @@ class revisionbingo extends Command
      */
     public function handle()
     {
-        $partidaActual = Carton::select('partida_id')
-            ->where('user_id', '=', 1)
-            //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
-            ->orderby('id', 'desc')
-            ->first();
-        $partidasdatos = Partida::findOrFail(1);
-        $count = 0;
-        foreach (explode(',', $partidasdatos['numerosQueHanSalido']) as $row) {
-            $numerosQueHanSalidospit[$count]['numerosquehansalido'] = $row;
-            $count++;
-        }
+        $partidas  = DataBase::table('partidas')->where('idcarton_bingo', '=', 0)->get();
 
-        $carton = Carton::findOrFail(65);
-        $count = 0;
-        foreach (explode(',', $carton->numeros) as $row) {
-            $numerocartonsplit[$count]['numeros'] = $row;
-            $count++;
-        }
+        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
 
-        /* foreach ($numerosQueHanSalidospit as $ca) {
-            echo $ca['numerosquehansalido'];
-        }
+        foreach ($partidas as $c) {
+            echo nl2br("**************************" . $c->id . "**********************************");
+            $partidasdatos = Partida::findOrFail($c->id);
+            $numerosQueHanSalidospit = array();
+            $count = 0;
+            foreach (explode(',', $partidasdatos['numerosQueHanSalido']) as $row) {
+                $numerosQueHanSalidospit[$count]['numerosquehansalido'] = $row;
+                $count++;
+            }
+            $carton = Carton::where('partida_id', $c->id)->get();
 
-        foreach ($numerocartonsplit as $ca1) {
-            echo $ca1['numeros'];
-        }*/
-        $numerosiguales = 0;
-        $idganador=" ";
-        foreach ($numerosQueHanSalidospit as $ca) {
-            foreach ($numerocartonsplit as $ca1) {
-                if ($ca['numerosquehansalido'] == $ca1['numeros'] && $ca['numerosquehansalido']!="") {
-                    $numerosiguales++;
-                    if($numerosiguales==25){
-                        $idganador=$ca1['user_id'];
+            foreach ($carton as $c) {
+                $numerosiguales = 0;
+
+                foreach ($numerosQueHanSalidospit as $nm) {
+                    foreach (explode(',', $c['numeros']) as $row) {
+                        if ($row == $nm['numerosquehansalido'] && $row!="") {
+                            $numerosiguales++;
+                        }
                     }
                 }
+                echo "numero iguales".$numerosiguales."dell carton".$c->id;
+                if($numerosiguales==25){
+                    Partida::where('id','=', $c->id)->update(['idcarton_bingo' => $c->user_id]);
+                }
+
             }
         }
-       
-        echo $numerosiguales." ".$idganador;
-
     }
 }

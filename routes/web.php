@@ -82,5 +82,6 @@ Route::get('/vistacarton', 'PartidaController@numeros');
 Route::post('/crearcartones', 'PartidaController@crearcartones');
 Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
 Route::get('/ultimonumero', 'PartidaController@ultimonumero');
+Route::get('/ganador', 'PartidaController@ganador');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
