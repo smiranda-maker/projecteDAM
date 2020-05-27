@@ -85,7 +85,6 @@ class revisionbingo extends Command
                     $countfila = $countfila + 5;
                     $countwhile++;
                     echo $numeroslineahorizontal;
-                        echo "nueva fila";
                 }
                 /*Vertical */
                 $countwhile = 0;
