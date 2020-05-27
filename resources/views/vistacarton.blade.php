@@ -149,7 +149,10 @@
 
     </div>
     <div>
-        <span id="ganador"></span>
+    <h2 style="color:green;">Ganadores</h2>
+    <span id="ganador"></span>
+    <span id="linea"></span>
+    <span id="diagonal"></span>
 
     </div>
 
