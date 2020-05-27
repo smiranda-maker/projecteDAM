@@ -84,6 +84,8 @@ Route::get('/vistacarton', 'PartidaController@numeros');
 Route::post('/crearcartones', 'PartidaController@crearcartones');
 Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
 Route::get('/ultimonumero', 'PartidaController@ultimonumero');
+Route::get('/linea', 'PartidaController@linea');
+Route::get('/diagonal', 'PartidaController@diagonal');
 Route::get('/ganador', 'PartidaController@ganador');
 Route::get('/ganadorlinea', 'PartidaController@ganadorlinea');
 

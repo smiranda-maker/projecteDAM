@@ -108,24 +108,24 @@ class PartidaController extends Controller
 
         $user = Auth::user();
         $count = 0;
-       
 
-        
-        
+
+
+
         while ($count < $Request->cartones) {
-            $numeroscarton=array();
-            $countnumeros=0;
-            while ($countnumeros<25) {
-                $num_aleatorio = rand(1,99);
-                if (!in_array($num_aleatorio,$numeroscarton)) {
-                  array_push($numeroscarton,$num_aleatorio);
-                  $countnumeros++;
+            $numeroscarton = array();
+            $countnumeros = 0;
+            while ($countnumeros < 25) {
+                $num_aleatorio = rand(1, 99);
+                if (!in_array($num_aleatorio, $numeroscarton)) {
+                    array_push($numeroscarton, $num_aleatorio);
+                    $countnumeros++;
                 }
-              }
-              //Ordenas el array de menor a mayor
-              sort($numeroscarton);
-              //Pasas el array a string separados por comas
-              $numeroscarton=implode(",",$numeroscarton);
+            }
+            //Ordenas el array de menor a mayor
+            sort($numeroscarton);
+            //Pasas el array a string separados por comas
+            $numeroscarton = implode(",", $numeroscarton);
             $cartones = new Carton();
 
             //Recibimos la ultima partida que se ha creado en esa ciudad
@@ -167,7 +167,7 @@ class PartidaController extends Controller
     {
 
         $partidaActual = Carton::select('partida_id')
-            ->where('user_id', '=', 1)
+            ->where('user_id', '=', Auth::user()->id)
             //importante ordenar por id de carton y no por partida_id (fallo que dio problemas)
             ->orderby('id', 'desc')
             ->first();
@@ -183,7 +183,7 @@ class PartidaController extends Controller
     {
 
         $partidaActual = Carton::select('partida_id')
-            ->where('user_id', '=', 1)
+            ->where('user_id', '=', Auth::user()->id)
             //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
             ->orderby('id', 'desc')
             ->first();
@@ -225,15 +225,15 @@ class PartidaController extends Controller
         $partidas  = DataBase::table('partidas')->where('id', '=', Auth::user()->id)->get();
 
         foreach ($partidas as $row) {
-            if ($row->idcarton_bingo != 0) {
+            if ($row->idcarton_bingo != null) {
                 $usuario = User::findOrFail($row->idcarton_bingo);
                 return response()->json(['data' => $usuario['nickname']]);
             }
         }
     }
 
-    public function ganadorlinea(){
-        
+    public function linea()
+    {
         $partidas  = DataBase::table('partidas')->where('id', '=', 1)->get();
 
         foreach ($partidas as $row) {
@@ -242,7 +242,17 @@ class PartidaController extends Controller
                 return response()->json(['data' => $usuario['nickname']]);
             }
         }
+    }
 
+    public function diagonal()
+    {
+        $partidas  = DataBase::table('partidas')->where('id', '=', Auth::user()->id)->get();
 
+        foreach ($partidas as $row) {
+            if ($row->idcarton_diagonal != null) {
+                $usuario = User::findOrFail($row->idcarton_diagonal);
+                return response()->json(['data' => $usuario['nickname']]);
+            }
+        }
     }
 }
