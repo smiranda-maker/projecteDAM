@@ -82,7 +82,6 @@ class PartidaController extends Controller
         }
 
 
-        return view('/vistacarton', compact('numerossplit', 'numerossplit1'));
         /********** */
         $partidaActual = Carton::select('partida_id')
             ->where('user_id', '=', Auth::user()->id)
@@ -220,5 +219,19 @@ class PartidaController extends Controller
                 return response()->json(['data' => $usuario['nickname']]);
             }
         }
+    }
+
+    public function ganadorlinea(){
+        
+        $partidas  = DataBase::table('partidas')->where('id', '=', 1)->get();
+
+        foreach ($partidas as $row) {
+            if ($row->idcarton_linea != null) {
+                $usuario = User::findOrFail($row->idcarton_linea);
+                return response()->json(['data' => $usuario['nickname']]);
+            }
+        }
+
+
     }
 }

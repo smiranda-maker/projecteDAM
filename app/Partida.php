@@ -12,10 +12,5 @@ class Partida extends Model
     ];
 
 
-    // public function cartons(){
-    //     return $this->hasMany(Carton::class);
-    // }
-
-
 
 }
