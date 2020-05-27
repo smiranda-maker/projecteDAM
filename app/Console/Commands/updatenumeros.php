@@ -38,17 +38,20 @@ class updatenumeros extends Command
      * @return mixed
      */
     public function handle()
-    {
+    {   
+        
+        $numerosQueYaHanSalido=array();
 
+        
+        $partidas  = DataBase::table('partidas')->where('id','=', 4)->get();
+        $arrayCampoNumeros=explode(",",$partidas->numerosQueHanSalido);
 
         $numeronuevo = rand(1,99);
-        $partidas  = DataBase::table('partidas')->where('id','=', 1)->get();
-
-        foreach ($partidas as $ca) {
-            $numerossplit1 = $ca->numerosQueHanSalido;
+        if (!in_array($numeronuevo,$arrayCampoNumeros)) {
+            array_push($arrayCampoNumeros,$numeronuevo);
         }
 
-        Partida::where('id','=', 1)->update(['numerosQueHanSalido' => $numerossplit1.",".$numeronuevo]);
+        Partida::where('id','=', 4)->update(['numerosQueHanSalido' => implode($arrayCampoNumeros)]);
 
     }
 

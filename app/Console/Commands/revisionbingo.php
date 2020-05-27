@@ -41,9 +41,8 @@ class revisionbingo extends Command
      */
     public function handle()
     {
-        $partidas  = DataBase::table('partidas')->where('idcarton_bingo', '=', 0)->get();
+        $partidas  = DataBase::table('partidas')->where('idcarton_bingo', '=', )->get();
 
-        //importante ordenar por ir de carton y no por partida_id (fallo que dio problemas)
 
         foreach ($partidas as $c) {
             // echo nl2br("**************************" . $c->id . "**********************************");
@@ -85,7 +84,11 @@ class revisionbingo extends Command
                     $countfila = $countfila + 5;
                     $countwhile++;
                     echo $numeroslineahorizontal;
+                    
                 }
+                $partidasdatos->idcarton_linea= $partidasdatos->idcarton_linea.$c->id.",";
+                $partidasdatos->save();
+
                 /*Vertical */
                 $countwhile = 0;
                 $countfila = 0;
@@ -125,7 +128,9 @@ class revisionbingo extends Command
                 }
                 //echo "numero iguales" . $numerosiguales . "dell carton" . $c->id;
                 if ($numerosiguales == 25) {
-                    Partida::where('id', '=', $c->id)->update(['idcarton_bingo' => $c->user_id]);
+                    $partida=Partida::where('id', '=', $c->partida_id)->get();
+                    $partida->idcarton_bingo=$partida->idcarton_bingo.$c->id;
+                    $partida->save();
                 }
             }
         }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Partida;
 use App\Carton;
+use Illuminate\Support\Facades\DB as DataBase;
 
 
 //use Pixeloution\Random\Randomizer;
@@ -78,6 +79,7 @@ Route::get('/numerosAPartida',function(){
 
 });
 
+
 Route::get('/vistacarton', 'PartidaController@numeros');
 Route::post('/crearcartones', 'PartidaController@crearcartones');
 Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
@@ -129,4 +131,11 @@ Route::get('/pruebalinea',function(){
     }
 
 
+});
+
+Route::get('/prubpartida',function(){
+
+    $partidas  = DataBase::table('partidas')->select('numerosQueHanSalido')->where('id','=', 4)->get();
+    return $partidas->numerosQueHanSalido;
+    $arrayCampoNumeros=explode(",",$partidas->numerosQueHanSalido);
 });

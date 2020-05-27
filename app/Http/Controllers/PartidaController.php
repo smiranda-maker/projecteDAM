@@ -108,12 +108,21 @@ class PartidaController extends Controller
 
         $user = Auth::user();
         $count = 0;
-        $countnumeros = 0;
-        $numeroscarton = "";
-        while ($countnumeros < 25) {
-            $numeroscarton = rand(10, 100) . "," . $numeroscarton;
-            $countnumeros++;
+        $numeroscarton=array();
+        $countnumeros=0;
+
+        while ($countnumeros<25) {
+        $num_aleatorio = rand(1,99);
+        if (!in_array($num_aleatorio,$numeroscarton)) {
+          array_push($numeroscarton,$num_aleatorio);
+          $countnumeros++;
         }
+      }
+      //Ordenas el array de menor a mayor
+      sort($numeroscarton);
+      //Pasas el array a string separados por comas
+      $numeroscarton=implode(",",$numeroscarton);
+        
         while ($count < $Request->cartones) {
             $cartones = new Carton();
 
