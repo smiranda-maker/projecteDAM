@@ -135,7 +135,7 @@ Route::get('/pruebalinea',function(){
 
 Route::get('/prubpartida',function(){
 
-    $partidas  = DataBase::table('partidas')->select('numerosQueHanSalido')->where('id','=', 4)->get();
+    $partidas  = Partida::where('id','=', 4)->first();
     return $partidas->numerosQueHanSalido;
     $arrayCampoNumeros=explode(",",$partidas->numerosQueHanSalido);
 });
