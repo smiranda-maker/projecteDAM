@@ -235,7 +235,6 @@ class PartidaController extends Controller
     public function linea()
     {
         $partidas  = DataBase::table('partidas')->where('id', '=', 1)->get();
-
         foreach ($partidas as $row) {
             if ($row->idcarton_linea != null) {
                 $usuario = User::findOrFail($row->idcarton_linea);

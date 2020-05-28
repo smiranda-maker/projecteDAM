@@ -115,10 +115,10 @@
                 }
             });
         }
-        setInterval(Bingo, 3000);
-        setInterval(linea, 3000);
-        setInterval(diagonal, 3000);
-        setInterval(marcarnumero, 3000);
+        setInterval(Bingo, 1000);
+        setInterval(linea, 1000);
+        setInterval(diagonal, 1000);
+        setInterval(marcarnumero, 1000);
     });
 </script>
 <style>

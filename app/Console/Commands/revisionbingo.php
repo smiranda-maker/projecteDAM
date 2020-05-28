@@ -44,22 +44,17 @@ class revisionbingo extends Command
 
 
         $partidas  = DataBase::table('partidas')->where('idcarton_bingo', '=', null)->get();
-        // echo $partidas;
 
         foreach ($partidas as $partida) {
             $partidas  = DataBase::table('partidas')->where('id', '=', $partida->id)->first();
             $arrayCampoNumeros = explode(",", $partidas->numerosQueHanSalido);
-
             $numeronuevo = rand(1, 99);
             if (!in_array($numeronuevo, $arrayCampoNumeros)) {
                 array_push($arrayCampoNumeros, $numeronuevo);
             }
 
             Partida::where('id', '=', $partida->id)->update(['numerosQueHanSalido' => implode(",", $arrayCampoNumeros)]);
-           // echo $partida->idcarton_linea;
-            $jugadorpremiadolinea = 0;
             $jugadorpremiadobingo = 0;
-            // echo nl2br("**************************" . $c->id . "**********************************");
             $partidasdatos = Partida::findOrFail($partida->id);
             $numerosQueHanSalidospit = array();
             $count = 0;
@@ -67,148 +62,152 @@ class revisionbingo extends Command
                 $numerosQueHanSalidospit[$count]['numerosquehansalido'] = $row;
                 $count++;
             }
+            echo $partidasdatos['idcarton_linea'];
             $carton = Carton::where('partida_id', $partida->id)->get();
             /*REVISION LINEA HORINZONTAL O VERTICAL*/
-
+            $iddeljugador = 0;
+            $lineatocado = 0;
+            $Bingotocado = 0;
+            $diagonaltocado = 0;
             foreach ($carton as $c) {
-
+                $iddeljugador = $c->user_id;
+                if ($lineatocado != $iddeljugador) {
+                    $lineatocado = 0;
+                }
+                if ($diagonaltocado != $iddeljugador) {
+                    $diagonaltocado = 0;
+                }
                 $numerosarray = array();
                 $count = 0;
                 foreach (explode(',', $c['numeros']) as $row) {
                     $numerosarray[$count]['numero'] = $row;
                     $count++;
                 }
-                /*horizontal*/
-                $countwhile = 0;
-                $countfila = 0;
+                if ($partidasdatos['idcarton_linea'] == null) {
+                    /*horizontal*/
+                    $countwhile = 0;
+                    $countfila = 0;
 
-                while ($countwhile != 5) {
-                    $numeroslineahorizontal = 0;
-                    $countnumeros = 0;
-                    while ($countnumeros != 5) {
-                        foreach ($numerosQueHanSalidospit as $nm) {
-                            if ($numerosarray[$countnumeros + $countfila]['numero'] == $nm['numerosquehansalido']) {
-                                $numeroslineahorizontal++;
+                    while ($countwhile != 5) {
+                        $numeroslineahorizontal = 0;
+                        $countnumeros = 0;
+                        while ($countnumeros != 5) {
+                            foreach ($numerosQueHanSalidospit as $nm) {
+                                if ($numerosarray[$countnumeros + $countfila]['numero'] == $nm['numerosquehansalido']) {
+                                    $numeroslineahorizontal++;
+                                }
+                            }
+                            $countnumeros++;
+                        }
+
+                        $countfila = $countfila + 5;
+                        $countwhile++;
+                        if ($numeroslineahorizontal == 5) {
+                            if ($lineatocado == 0) {
+                                $lineatocado = $c->user_id;
+                                $partida = Partida::where('id', '=', $c->partida_id)->get();
+                                $partida[0]['idcarton_linea'] = $partida[0]['idcarton_linea'] . "," . $c->user_id;
+                                Partida::where('id', '=', $c->partida_id)->update(['idcarton_linea' => $partida[0]['idcarton_linea']]);
                             }
                         }
-                        $countnumeros++;
+                        $numeroslineahorizontal = 0;
                     }
 
-                    $countfila = $countfila + 5;
-                    $countwhile++;
-                    if ($numeroslineahorizontal == 5) {
-                        if ($jugadorpremiadolinea == 0) {
-                            $jugadorpremiadolinea = $c->user_id;
-                            $partida = Partida::where('id', '=', $c->partida_id)->get();
-                            $partida[0]['idcarton_linea'] = $partida[0]['idcarton_linea'] . $c->user_id;
-                            Partida::where('id', '=', $c->partida_id)->update(['idcarton_linea' => $partida[0]['idcarton_linea']]);
+
+                    /*Vertical */
+                    $countwhile = 0;
+                    $countfila = 0;
+                    while ($countwhile != 5) {
+                        $numeroslineavertical = 0;
+
+                        $countnumeros = 0;
+                        $sumavertical = 0;
+                        while ($countnumeros != 5) {
+                            foreach ($numerosQueHanSalidospit as $nm) {
+                                if ($numerosarray[$countfila + $sumavertical]['numero'] == $nm['numerosquehansalido']) {
+                                    $numeroslineavertical++;
+                                }
+                            }
+
+                            $sumavertical = $sumavertical + 5;
+                            $countnumeros++;
+                        }
+
+                        $countfila++;
+                        $countwhile++;
+                        if ($numeroslineavertical == 5) {
+                            if ($lineatocado == 0) {
+                                $lineatocado = $c->user_id;
+                                $partida = Partida::where('id', '=', $c->partida_id)->get();
+                                $partida[0]['idcarton_linea'] = $partida[0]['idcarton_linea'] . "," . $c->user_id;
+                                Partida::where('id', '=', $c->partida_id)->update(['idcarton_linea' => $partida[0]['idcarton_linea']]);
+                            }
                         }
                     }
                 }
 
+                /**bingo Diagonal izquierda a derecha */
+                if ($partidasdatos['idcarton_diagonal'] == null) {
 
-                /*Vertical */
-                $countwhile = 0;
-                $countfila = 0;
-                while ($countwhile != 5) {
-                    $numeroslineavertical = 0;
+                    $countwhile = 0;
+                    $countfila = 0;
+                    $numeroslineadiagonalizde = 0;
 
-                    $countnumeros = 0;
-                    $sumavertical = 0;
-                    while ($countnumeros != 5) {
+                    while ($countwhile != 5) {
                         foreach ($numerosQueHanSalidospit as $nm) {
-                            if ($numerosarray[$countfila + $sumavertical]['numero'] == $nm['numerosquehansalido']) {
-                                $numeroslineavertical++;
-                                //echo $numeroslinea;
+                            if ($numerosarray[$countfila]['numero'] == $nm['numerosquehansalido']) {
+                                $numeroslineadiagonalizde++;
                             }
                         }
 
-                        $sumavertical = $sumavertical + 5;
-                        $countnumeros++;
-                    }
 
-                    $countfila++;
-                    $countwhile++;
-                    //echo $numeroslineavertical;
-                    if ($numeroslineavertical == 5) {
-                        if ($jugadorpremiadolinea == 0) {
-                            $jugadorpremiadolinea = $c->user_id;
-                            $partida = Partida::where('id', '=', $c->partida_id)->get();
-                            $partida[0]['idcarton_linea'] = $partida[0]['idcarton_linea'] . $c->user_id;
-                            Partida::where('id', '=', $c->partida_id)->update(['idcarton_linea' => $partida[0]['idcarton_linea']]);
+
+
+                        $countfila = $countfila + 6;
+                        $countwhile++;
+                        if ($numeroslineadiagonalizde == 5) {
+                            if ($diagonaltocado == 0) {
+                                $diagonaltocado = $c->user_id;
+                                $partida = Partida::where('id', '=', $c->partida_id)->get();
+                                $partida[0]['idcarton_diagonal'] = $partida[0]['idcarton_diagonal'] . "," . $c->user_id;
+                                Partida::where('id', '=', $c->partida_id)->update(['idcarton_diagonal' => $partida[0]['idcarton_diagonal']]);
+                            }
                         }
                     }
-                    // echo "nueva fila";
+                    /*Diagonal derecha a izquierda */
+                    $countwhile = 0;
+                    $countfila = 4;
+                    $numeroslineadiagonaldeiz = 0;
 
-                    /**bingo Diagonal izquierda a derecha */
-                   
-
-
-                }
-                $countwhile = 0;
-                $countfila = 0;
-                $numeroslineadiagonalizde = 0;
-
-                while ($countwhile != 5) {
-                    foreach ($numerosQueHanSalidospit as $nm) {
-                        if ($numerosarray[$countfila]['numero'] == $nm['numerosquehansalido']) {
-                            $numeroslineadiagonalizde++;
-                            echo "suma";
+                    while ($countwhile != 5) {
+                        foreach ($numerosQueHanSalidospit as $nm) {
+                            if ($numerosarray[$countfila]['numero'] == $nm['numerosquehansalido']) {
+                                $numeroslineadiagonaldeiz++;
+                            }
                         }
 
-                    }
-                    //echo "numero".$numerosarray[$countfila]['numero'];
 
 
-                    
-                    echo $numeroslineadiagonalizde;
 
-                    $countfila = $countfila + 6;
-                    $countwhile++;
-                    if ($numeroslineadiagonalizde == 5) {
-                       // if ($jugadorpremiadolinea == 0) {
-                            $jugadorpremiadolinea = $c->user_id;
-                            $partida = Partida::where('id', '=', $c->partida_id)->get();
-                            $partida[0]['idcarton_diagonal'] = $partida[0]['idcarton_diagonal'] . $c->user_id;
-                            Partida::where('id', '=', $c->partida_id)->update(['idcarton_diagonal' => $partida[0]['idcarton_linea']]);
-                        //}
-                    }
-                }
-                /*Diagonal derecha a izquierda */
-                $countwhile = 0;
-                $countfila = 4;
-                $numeroslineadiagonalizde = 0;
-
-                while ($countwhile != 5) {
-                    foreach ($numerosQueHanSalidospit as $nm) {
-                        if ($numerosarray[$countfila]['numero'] == $nm['numerosquehansalido']) {
-                            $numeroslineadiagonalizde++;
-                            echo "suma";
+                        $countfila = $countfila + 4;
+                        $countwhile++;
+                        if ($numeroslineadiagonaldeiz == 5) {
+                            if ($diagonaltocado == 0) {
+                                $diagonaltocado = $c->user_id;
+                                $partida = Partida::where('id', '=', $c->partida_id)->get();
+                                $partida[0]['idcarton_diagonal'] = $partida[0]['idcarton_diagonal'] . "," . $c->user_id;
+                                Partida::where('id', '=', $c->partida_id)->update(['idcarton_diagonal' => $partida[0]['idcarton_diagonal']]);
+                            }
                         }
-
-                    }
-                    //echo "numero".$numerosarray[$countfila]['numero'];
-
-
-                    
-                    echo $numeroslineadiagonalizde;
-
-                    $countfila = $countfila + 4;
-                    $countwhile++;
-                    if ($numeroslineadiagonalizde == 5) {
-                       // if ($jugadorpremiadolinea == 0) {
-                            $jugadorpremiadolinea = $c->user_id;
-                            $partida = Partida::where('id', '=', $c->partida_id)->get();
-                            $partida[0]['idcarton_diagonal'] = $partida[0]['idcarton_diagonal'] . $c->user_id;
-                            Partida::where('id', '=', $c->partida_id)->update(['idcarton_diagonal' => $partida[0]['idcarton_linea']]);
-                        //}
                     }
                 }
             }
+
+
             /*REVISION BINGO */
             foreach ($carton as $c) {
                 $numerosiguales = 0;
-
+                $iddeljugador = $c->user_id;
                 foreach ($numerosQueHanSalidospit as $nm) {
                     foreach (explode(',', $c['numeros']) as $row) {
                         if ($row == $nm['numerosquehansalido'] && $row != "") {
@@ -216,12 +215,16 @@ class revisionbingo extends Command
                         }
                     }
                 }
-                //echo "numeros iguales" . $numerosiguales;
+                echo $numerosiguales;
+
+                if ($Bingotocado != $iddeljugador) {
+                    $Bingotocado = 0;
+                }
                 if ($numerosiguales == 25) {
-                    if ($jugadorpremiadobingo == 0) {
-                        $jugadorpremiadobingo = $c->user_id;
+                    if ($Bingotocado == 0) {
+                        $Bingotocado = $c->user_id;
                         $partida = Partida::where('id', '=', $c->partida_id)->get();
-                        $partida[0]['idcarton_bingo'] = $partida[0]['idcarton_bingo'] . $c->user_id;
+                        $partida[0]['idcarton_bingo'] = $partida[0]['idcarton_bingo'] . "," . $c->user_id;
                         Partida::where('id', '=', $c->partida_id)->update(['idcarton_bingo' => $partida[0]['idcarton_bingo']]);
                     }
                 }

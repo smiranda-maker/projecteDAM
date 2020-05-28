@@ -87,7 +87,6 @@ Route::get('/ultimonumero', 'PartidaController@ultimonumero');
 Route::get('/linea', 'PartidaController@linea');
 Route::get('/diagonal', 'PartidaController@diagonal');
 Route::get('/ganador', 'PartidaController@ganador');
-Route::get('/ganadorlinea', 'PartidaController@ganadorlinea');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
