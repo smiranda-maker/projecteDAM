@@ -9,6 +9,10 @@
     <title>Ciudades</title>
     <link rel="stylesheet" type="text/css" rel="stylesheet" href="css/ciudades.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import countdown-->
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <!--Let browser know website is optimized for mobile-->
@@ -25,7 +29,9 @@
             $('input[type="number"]').niceNumber();
 
         });
+
     </script>
+    
 
     <style>
         /*numero cartones*/
@@ -101,8 +107,12 @@
 
         <div class="section s1">
         <h1 class="neon" data-text="Madrid">Madrid</h1>
+        <!-- INICIO COUNTDOWN -->
+        <div id="countdown" class="row justify-content-center align-items-center">
+        </div>
+        <!-- FIN COUNTDOWN -->
+        
             <div class="numCartones">
-                <p>indica el numero de cartones:</p>
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
                     <input class="in" type="number" value="1" name="cartones">
                     <input class="in" type="hidden" value="1" name="idciudad">
@@ -113,14 +123,19 @@
                         <span></span>
                         Comprar Producto</button>
                     {{ csrf_field() }}
-                </form>
+                </form><br>
+                <p>indica el numero de cartones:</p>
+
             </div>
         </div>
 
         <div class="section s2">
         <h1 class="neon" data-text="Dubai">Dubai</h1>
+         <!-- INICIO COUNTDOWN -->
+         <div id="countdown" class="row justify-content-center align-items-center">
+        </div>
+        <!-- FIN COUNTDOWN -->
             <div class="numCartones">
-                <p>indica el numero de cartones:</p>
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
                     <input class="in" type="number" value="1" name="cartones">
                     <input class="in" type="hidden" value="2" name="idciudad">
@@ -131,15 +146,19 @@
                         <span></span>
                         Comprar Producto</button>
                     {{ csrf_field() }}
-                </form>
+                </form><br>
+                <p>indica el numero de cartones:</p>
 
             </div>
         </div>
 
         <div class="section s3">
         <h1 class="neon" data-text="Las Vegas">Las Vegas</h1>
+         <!-- INICIO COUNTDOWN -->
+         <div id="countdown" class="row justify-content-center align-items-center">
+        </div>
+        <!-- FIN COUNTDOWN -->
             <div class="numCartones">
-            <p>indica el numero de cartones:</p>
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
                     <input class="in" type="number" value="1" name="cartones">
                     <input class="in" type="hidden" value="3" name="idciudad">
@@ -150,7 +169,9 @@
                         <span></span>
                         Comprar Producto</button>
                     {{ csrf_field() }}
-                </form>
+                </form><br>
+                <p>indica el numero de cartones:</p>
+
             </div>
         </div>
 
@@ -195,7 +216,17 @@
             scrollingSpeed: 1500
 
         });
+
+        
     </script>
+
+    <!-- //COUNTDOWN -->
+    <script src="js/jquery-3.3.1.min.js"></script>	 	
+    <script src="js/popper.min.js"></script>	 	 	
+	  
+    <!--    Plugin countdown  -->
+	<script src="js/countdown.jquery.js"></script>
+    <script src="js/codigo.js"></script> 	  
 </body>
 
 </html>

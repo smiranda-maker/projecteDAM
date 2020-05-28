@@ -162,6 +162,17 @@ class PartidaController extends Controller
         return redirect('/vistacarton');
     }
 
+    public function cuentaatras(){
+
+        $fecha = Carbon::now();
+        $fecha = $fecha->format('Y-m-d:H:i');
+        //Solo te da 1 partida (por el first)
+        $partida=Partida::where('fechaEmpieza','>',$fecha)->first();
+
+        return $partida;
+
+    }
+
     //Funcion que llama a la partida actual y 'canta' numeros
     public function numerosmostrados()
     {

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Partida;
 use App\Carton;
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\DB as DataBase;
 
 
@@ -86,56 +88,17 @@ Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
 Route::get('/ultimonumero', 'PartidaController@ultimonumero');
 Route::get('/ganador', 'PartidaController@ganador');
 Route::get('/ganadorlinea', 'PartidaController@ganadorlinea');
+Route::get('/cuentaatras', 'PartidaController@cuentaatras');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/pruebalinea',function(){
+Route::get('/pruebafecha',function(){
 
-     //Pillo todas las partidas que se estan jugando
-    $partidas=Partida::where('idcarton_bingo','=',null)->get();
+    $fecha = Carbon::now();
+    $fecha = $fecha->format('Y-m-d:H:i');
+    $partida=Partida::where('fechaEmpieza','>',$fecha)->first();
 
-    
-
-    foreach($partidas as $part){
-            
-        //Selecciono todos los cartones de esa partida
-        $cartones=Carton::where('partida_id','=',$part->id)->get();
-        
-        //Array numeros partida
-        $numerosPartida=explode(',',$part->numerosQueHanSalido);
-        // return $numerosPartida;
-        if($part->idcarton_linea==null){
-            
-            foreach($cartones as $carton){
-
-                
-
-                $numerosCarton=explode(',',$carton->numeros);
-                 //return $numerosCarton;
-
-                //Me recorro los numeros del carton que es un array
-                //Si la primera tengo todos los numeros de la primera
-                //fila canto linea.
-                if(array_key_exists($numerosCarton[1],$numerosPartida)){
-                        
-                    //En el campo idcaton_linea guardo la id
-                    //del carton que ha hecho linea.
-                   return "dentr12o";
-
-                }
-
-            }
-
-        }
-
-    }
+    return $partida->fechaEmpieza;
 
 
-});
-
-Route::get('/prubpartida',function(){
-
-    $partidas  = Partida::where('id','=', 4)->first();
-    return $partidas->numerosQueHanSalido;
-    $arrayCampoNumeros=explode(",",$partidas->numerosQueHanSalido);
 });
