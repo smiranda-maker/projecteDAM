@@ -40,8 +40,14 @@
                 var res = data['data'];
                 separadores = [','];
                 textoseparado = res.split(new RegExp(separadores.join('|'), 'g'));
+
                 jQuery.each(textoseparado, function(i, val) {
-                    $("." + val).addClass("important");
+                    console.log(val);
+                    if (val != "") {
+                        $("." + val).addClass("important");
+
+                    }
+
                 });
             }
         });
@@ -61,6 +67,7 @@
                 });
             }
         });
+
         function Bingo() {
             $.ajax({
                 type: "GET",
@@ -70,21 +77,56 @@
                 },
                 async: true,
                 success: function(data) {
-                    if(data['data']!=0){
-                        $('#ganador').text("Ganador de Bingo: "+ data['data']);
+                    if (data['data'] != null) {
+                        $('#ganador').text("Ganador de Bingo: " + data['data']);
                     }
                 }
             });
         }
-        setInterval(Bingo, 3000);
-        setInterval(marcarnumero, 3000);
+
+        function linea() {
+            $.ajax({
+                type: "GET",
+                url: "/linea",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: true,
+                success: function(data) {
+                    if (data['data'] != null) {
+                        $('#linea').text("Ganador de linea: " + data['data']);
+                    }
+                }
+            });
+        }
+
+        function diagonal() {
+            $.ajax({
+                type: "GET",
+                url: "/diagonal",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: true,
+                success: function(data) {
+                    if (data['data'] != null) {
+                        $('#diagonal').text("Ganador de diagonal: " + data['data']);
+                    }
+                }
+            });
+        }
+        setInterval(Bingo, 1000);
+        setInterval(linea, 1000);
+        setInterval(diagonal, 1000);
+        setInterval(marcarnumero, 1000);
     });
 </script>
 <style>
     .important {
         background: red;
     }
-    #ganador{
+
+    #ganador {
         color: green;
         font-family: 40px;
     }
@@ -132,11 +174,10 @@
 
     </div>
     <div>
-    <h2 style="color:green;">Ganadores</h2>
-    <span id="ganador"></span>
-    <span id="linea"></span>
-    <span id="diagonal"></span>
-
+        <h2 style="color:green;">Ganadores</h2>
+        <span id="linea"></span>
+        <span id="diagonal"></span>
+        <span id="ganador"></span>
     </div>
 
     <div class="container row " style="margin-bottom: 8%;">
@@ -167,7 +208,7 @@
     </div>
 
 
-    <footer style="margin-bottom:;" class="page-footer">
+    <footer style="" class="page-footer">
         <div class="container">
             <div class="row">
 
@@ -242,11 +283,13 @@
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
         });
+
         function cerrar() {
             document.getElementById("modal").style.display = "none";
             document.getElementById("modal").style.top = "1000px";
             document.getElementsByTagName("html")[0].style.overflow = "auto";
         }
+
         function mostrar() {
             document.getElementById("modal").style.display = "flex";
             document.getElementById("modal").style.top = "0px";

@@ -86,9 +86,14 @@ Route::get('/vistacarton', 'PartidaController@numeros');
 Route::post('/crearcartones', 'PartidaController@crearcartones');
 Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
 Route::get('/ultimonumero', 'PartidaController@ultimonumero');
+Route::get('/linea', 'PartidaController@linea');
+Route::get('/diagonal', 'PartidaController@diagonal');
 Route::get('/ganador', 'PartidaController@ganador');
+<<<<<<< HEAD
 Route::get('/ganadorlinea', 'PartidaController@ganadorlinea');
 Route::get('/cuentaatras', 'PartidaController@cuentaatras');
+=======
+>>>>>>> c1b90ce32483cbdb402309e95d717898ac55290a
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

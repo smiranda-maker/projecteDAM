@@ -34,6 +34,9 @@
     
 
     <style>
+     .sidenav-overlay {
+            z-index: 2;
+        }
         /*numero cartones*/
 
         .numCartones {
@@ -98,6 +101,56 @@
 </head>
 
 <body>
+
+<div class="black" style=" position: relative;z-index: 3;">
+        <div class="container section" style="padding: 1.5%; ">
+            <a href="#" class="brand-logo orange-text text-lighten-2" style="font-size: 28px;">  <img src="images/logocity.png" class="responsive-img" alt="" style="height: 60px;
+            width: 120px;"></a>
+            <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons blue-text text-lighten-2">menu</i></a>
+
+            <ul class="sidenav" id="menu-side" >
+
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="bingo-online.png" class="responsive-img" alt="">
+                        </div>
+                        <a href="#">
+                            <img src="icn.png" alt="" class="circle">
+                        </a>
+                        <a href="#">
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
+                        </a>
+                        <a href="#">
+                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
+                        </a>
+
+                    </div>
+                    <a href="#">
+                        <i class="material-icons">home</i>
+                        Inicio
+                    </a>
+
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a href="#">
+                        <i class="material-icons">home</i>
+                        Inicio
+                    </a>
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a href="#">
+                        <i class="material-icons">home</i>
+                        Inicio
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
 
 
 
