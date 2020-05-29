@@ -291,7 +291,7 @@
             autoScrolling: true,
             navigation: true,
 
-            navigationTooltips: ['New York', 'Las Vegas', 'Madrid'],
+            navigationTooltips: ['Madrid', 'Las Vegas', 'Dubai'],
             scrollingSpeed: 1500
 
         });

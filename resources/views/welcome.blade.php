@@ -135,7 +135,7 @@
            
 
         <h5>Dos tipos de ganadores en cada jugada</h5><br>
-        <span>1. Gana la persona o personas que antes tachen una fila completa (Llamado línea). Se da un premio menor y el juego continúa.<br>
+        <span>1. Gana la persona o personas que antes tachen una fila,columna o diagonal completa (Llamado línea). Se da un premio menor y el juego continúa.<br>
         2. Gana la persona o personas que antes tachen el cartón completo (Llamado bingo). Se da un premio mayor y el juego termina.</span>
             
             
