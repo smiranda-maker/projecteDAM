@@ -18,6 +18,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/css/productos.css">
+    <link rel="stylesheet" href="/css/footer.css">
 
 </head>
 
@@ -197,20 +198,55 @@
 
     </div>
 
-    <footer class="page-footer" style="background-color: #272626;">
+    <footer class="page-footer" style="background: linear-gradient(0deg, #000, #262626);">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Contenido</h5>
-                    <p class="grey-text text-lighten-4">Aqui va algo xD</p>
+                <div class="col l6 s12" id="fott">
+
+
+
+                    <div class="footer-condiciones">
+                        <p>Ayuda</p>
+                        <a href="#">Instrucciones</a>
+                        <a href="#">Soporte</a>
+                        <a href="#">Empezar a jugar</a>
+                        <a href="#">Normas de la comunidad</a>
+                    </div>
+
+                    <div class="footer-info">
+                        <p>Información</p>
+                        <a href="#">Empleo</a>
+                        <a href="#">¿Quienes somos?</a>
+
+                    </div>
+
+                    <div class="contenido-footer">
+                        <p>Terminos y condiciones</p>
+                        <a href="#">Condiciones legales</a>
+                        <a href="#">Politica de privacidad</a>
+                        <a href="#">Afiliados</a>
+
+                    </div>
+
                 </div>
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Contactanos</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Icono Facebook</a></li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="#!"><img  id="icono" src="images/insta.png" alt="instagram" class="circle responsive-img" ></a> 
+                            <a class="grey-text text-lighten-3" href="#!"><img id="icono" src="images/face.png" alt="facebook" class="circle responsive-img" ></a>
+                            <a class="grey-text text-lighten-3" href="#!"><img id="icono"  src="images/youtube.png" alt="youtube" class="circle responsive-img" ></a> 
+                            <a class="grey-text text-lighten-3" href="#!"><img  id="icono" src="images/twit.png" alt="twitter" class="circle responsive-img" ></a>
+                            <a class="grey-text text-lighten-3" href="#!"><img id="icono"  src="images/goo.png" alt="google+" class="circle responsive-img" ></a> 
+                        
+                        
+                        
+                        
+                        
+                        </li>
+              
+
+
                     </ul>
                 </div>
             </div>
@@ -222,6 +258,7 @@
             </div>
         </div>
     </footer>
+
 
 
     <!-- Compiled and minified JavaScript -->

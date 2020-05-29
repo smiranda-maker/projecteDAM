@@ -1,0 +1,44 @@
+page-footer {
+    padding-top: 20px;
+    color: #fff;
+    background: linear-gradient(0deg, #000, #262626);
+}
+
+#fott {
+    display: flex;
+}
+
+#fott>div {
+    flex: 1 1 33%;
+}
+
+#fott div {
+    display: flex;
+    flex-flow: column;
+}
+
+#fott div a{
+  text-decoration: none; 
+    color: white;
+    transition: 1s;
+    
+}
+#fott div a:hover{
+  text-decoration: none; 
+  color: rgba(67,140,230,1);
+    
+}
+
+ #fott div p{
+font-size: 20px;
+text-decoration-line: underline;
+    
+}
+
+
+#icono{height: 70px; width: 70px; box-shadow: 1px -1px 20px -5px  rgba(255,255,255,1); transition: 1s;}
+
+#icono:hover{
+  
+    box-shadow: 2px -2px 40px 0px  rgba(67,140,230,1);
+}
