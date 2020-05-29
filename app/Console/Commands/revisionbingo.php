@@ -7,6 +7,7 @@ use App\Carton;
 use App\Partida;
 use Illuminate\Support\Facades\DB as DataBase;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class revisionbingo extends Command
 {
@@ -46,10 +47,13 @@ class revisionbingo extends Command
         $partidas  = DataBase::table('partidas')->where('idcarton_bingo', '=', null)->get();
 
         foreach ($partidas as $partida) {
+            $partidacreada = 0;
             $partidas  = DataBase::table('partidas')->where('id', '=', $partida->id)->first();
             $arrayCampoNumeros = explode(",", $partidas->numerosQueHanSalido);
-            $numeronuevo = rand(1, 99);
+            $numeronuevo = rand(1,99);
+
             if (!in_array($numeronuevo, $arrayCampoNumeros)) {
+                echo $numeronuevo;
                 array_push($arrayCampoNumeros, $numeronuevo);
             }
 
@@ -62,7 +66,6 @@ class revisionbingo extends Command
                 $numerosQueHanSalidospit[$count]['numerosquehansalido'] = $row;
                 $count++;
             }
-            echo $partidasdatos['idcarton_linea'];
             $carton = Carton::where('partida_id', $partida->id)->get();
             /*REVISION LINEA HORINZONTAL O VERTICAL*/
             $iddeljugador = 0;
@@ -215,7 +218,6 @@ class revisionbingo extends Command
                         }
                     }
                 }
-                echo $numerosiguales;
 
                 if ($Bingotocado != $iddeljugador) {
                     $Bingotocado = 0;
@@ -226,6 +228,18 @@ class revisionbingo extends Command
                         $partida = Partida::where('id', '=', $c->partida_id)->get();
                         $partida[0]['idcarton_bingo'] = $partida[0]['idcarton_bingo'] . "," . $c->user_id;
                         Partida::where('id', '=', $c->partida_id)->update(['idcarton_bingo' => $partida[0]['idcarton_bingo']]);
+                    }
+
+                    if ($partidacreada == 0) {
+                        $partida = Partida::where('id', '=', $c->partida_id)->get();
+                        $carbon = Carbon::now();
+                        $carbon = $carbon->addHour(1);
+                        $carbon = $carbon->format('Y-m-d:H:i');
+                        $partida1 = new Partida();
+                        $partida1->ciudad_id = $partida[0]['ciudad_id'];
+                        $partida1->fechaEmpieza = $carbon;
+                        $partida1->save();
+                        $partidacreada = 1;
                     }
                 }
             }
