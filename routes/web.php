@@ -89,23 +89,18 @@ Route::get('/ultimonumero', 'PartidaController@ultimonumero');
 Route::get('/linea', 'PartidaController@linea');
 Route::get('/diagonal', 'PartidaController@diagonal');
 Route::get('/ganador', 'PartidaController@ganador');
-<<<<<<< HEAD
 Route::get('/ganadorlinea', 'PartidaController@ganadorlinea');
 Route::get('/cuentaatras', 'PartidaController@cuentaatras');
-=======
 
 
->>>>>>> 4c7cedb4a13c0b3658a9734f9cfe5eff571751ae
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/pruebafecha',function(){
 
-    $fecha = Carbon::now();
-    $fecha = $fecha->format('Y-m-d:H:i');
-    $partida=Partida::where('fechaEmpieza','>',$fecha)->first();
+    $carbon = Carbon::now();
+    $carbon = $carbon->addHour(1);
+    $carbon = $carbon->format('Y-m-d:H:i');
 
-    return $partida->fechaEmpieza;
-
-
+    return $carbon;
 });

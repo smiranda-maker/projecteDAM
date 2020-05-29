@@ -45,9 +45,8 @@ class updatenumeros extends Command
         
     $partidas  = DataBase::table('partidas')->where('id','=', 5)->first();
     $arrayCampoNumeros=explode(",",$partidas->numerosQueHanSalido);
+
     $repetido=false;
-
-
     $numeronuevo = rand(1,99);
     if (!in_array($numeronuevo,$arrayCampoNumeros)) {
         array_push($arrayCampoNumeros,$numeronuevo);

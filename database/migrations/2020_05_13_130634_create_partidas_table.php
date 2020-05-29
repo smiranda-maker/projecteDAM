@@ -17,7 +17,7 @@ class CreatePartidasTable extends Migration
             $table->id();
             $table->BigInteger('ciudad_id')->unsigned();
             $table->datetime('fechaEmpieza');
-            $table->string('numerosQueHanSalido')->nullable();
+            $table->string('numerosQueHanSalido',500)->nullable();
             $table->string('idcarton_linea')->nullable();
             $table->string('idcarton_bingo')->nullable();
             $table->string('idcarton_diagonal')->nullable();

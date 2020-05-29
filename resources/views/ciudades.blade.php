@@ -103,6 +103,7 @@
 <body>
 
 <div class="black" style=" position: relative;z-index: 3;">
+
         <div class="container section" style="padding: 1.5%; ">
             <a href="#" class="brand-logo orange-text text-lighten-2" style="font-size: 28px;">  <img src="images/logocity.png" class="responsive-img" alt="" style="height: 60px;
             width: 120px;"></a>
@@ -148,6 +149,10 @@
                 </li>
 
             </ul>
+            <!-- INICIO COUNTDOWN -->
+        <div id="countdown" class="row justify-content-center align-items-center">
+        </div>
+        <!-- FIN COUNTDOWN -->
         </div>
 
     </div>
@@ -160,10 +165,7 @@
 
         <div class="section s1">
         <h1 class="neon" data-text="Madrid">Madrid</h1>
-        <!-- INICIO COUNTDOWN -->
-        <div id="countdown" class="row justify-content-center align-items-center">
-        </div>
-        <!-- FIN COUNTDOWN -->
+        
         
             <div class="numCartones">
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
@@ -184,10 +186,7 @@
 
         <div class="section s2">
         <h1 class="neon" data-text="Dubai">Dubai</h1>
-         <!-- INICIO COUNTDOWN -->
-         <div id="countdown" class="row justify-content-center align-items-center">
-        </div>
-        <!-- FIN COUNTDOWN -->
+       
             <div class="numCartones">
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
                     <input class="in" type="number" value="1" name="cartones">
@@ -207,10 +206,7 @@
 
         <div class="section s3">
         <h1 class="neon" data-text="Las Vegas">Las Vegas</h1>
-         <!-- INICIO COUNTDOWN -->
-         <div id="countdown" class="row justify-content-center align-items-center">
-        </div>
-        <!-- FIN COUNTDOWN -->
+         
             <div class="numCartones">
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
                     <input class="in" type="number" value="1" name="cartones">

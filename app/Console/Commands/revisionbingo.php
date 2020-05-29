@@ -50,14 +50,23 @@ class revisionbingo extends Command
             $partidacreada = 0;
             $partidas  = DataBase::table('partidas')->where('id', '=', $partida->id)->first();
             $arrayCampoNumeros = explode(",", $partidas->numerosQueHanSalido);
+            
+            $repetido=false;
             $numeronuevo = rand(1,99);
-
-            if (!in_array($numeronuevo, $arrayCampoNumeros)) {
-                echo $numeronuevo;
-                array_push($arrayCampoNumeros, $numeronuevo);
+            if (!in_array($numeronuevo,$arrayCampoNumeros)) {
+                array_push($arrayCampoNumeros,$numeronuevo);
+            }else{
+                $repetido=true;
+                while($repetido){
+                    $numeronuevo=rand(1,99);
+                    if (!in_array($numeronuevo,$arrayCampoNumeros)) {
+                        array_push($arrayCampoNumeros,$numeronuevo);
+                        $repetido=false;
+                    }
+                }
             }
-
-            Partida::where('id', '=', $partida->id)->update(['numerosQueHanSalido' => implode(",", $arrayCampoNumeros)]);
+        
+            Partida::where('id','=', $partida->id)->update(['numerosQueHanSalido' => implode(",",$arrayCampoNumeros)]);
             $jugadorpremiadobingo = 0;
             $partidasdatos = Partida::findOrFail($partida->id);
             $numerosQueHanSalidospit = array();

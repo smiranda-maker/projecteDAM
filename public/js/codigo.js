@@ -9,7 +9,6 @@
     success: function(data) {
         var res = data['fechaEmpieza'];
         var fecha= new Date(res)
-        console.log("Mes "+fecha.getMonth()+1+"  Dia"+fecha.getDate()+"Hora "+fecha.getHours());
 
         
 $(function(){    
@@ -20,7 +19,7 @@ $(function(){
         year: fecha.getFullYear(),
         month: fecha.getMonth()+1,
         day: fecha.getDate(),
-        hour: fecha.getHours()+1, //formato 24hr
+        hour: fecha.getHours()+2, //formato 24hr
         minute: fecha.getMinutes(),
         second: fecha.getSeconds(),
         
@@ -33,7 +32,6 @@ $(function(){
 });
     }
 
-    
 
 });
 
