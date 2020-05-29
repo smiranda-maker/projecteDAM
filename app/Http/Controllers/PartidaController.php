@@ -220,7 +220,6 @@ class PartidaController extends Controller
             ->first();
 
 
-
         //En esa partida es donde enviaremos los numeros.
         $count = 0;
         $partidasdatos = Partida::findOrFail($partidaActual->partida_id);

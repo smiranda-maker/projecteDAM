@@ -43,15 +43,26 @@ class updatenumeros extends Command
         $numerosQueYaHanSalido=array();
 
         
-        $partidas  = DataBase::table('partidas')->where('id','=', 1)->first();
-        $arrayCampoNumeros=explode(",",$partidas->numerosQueHanSalido);
+    $partidas  = DataBase::table('partidas')->where('id','=', 5)->first();
+    $arrayCampoNumeros=explode(",",$partidas->numerosQueHanSalido);
+    $repetido=false;
 
-        $numeronuevo = rand(1,99);
-        if (!in_array($numeronuevo,$arrayCampoNumeros)) {
-            array_push($arrayCampoNumeros,$numeronuevo);
+
+    $numeronuevo = rand(1,99);
+    if (!in_array($numeronuevo,$arrayCampoNumeros)) {
+        array_push($arrayCampoNumeros,$numeronuevo);
+    }else{
+        $repetido=true;
+        while($repetido){
+            $numeronuevo=rand(1,99);
+            if (!in_array($numeronuevo,$arrayCampoNumeros)) {
+                array_push($arrayCampoNumeros,$numeronuevo);
+                $repetido=false;
+            }
         }
+    }
 
-        Partida::where('id','=', 1)->update(['numerosQueHanSalido' => implode(",",$arrayCampoNumeros)]);
+    Partida::where('id','=', 5)->update(['numerosQueHanSalido' => implode(",",$arrayCampoNumeros)]);
 
     }
 
