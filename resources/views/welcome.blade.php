@@ -114,7 +114,7 @@
 
     <ul class="collapsible">
         <li class="active">
-            <div class="collapsible-header" style="margin-left: 100px;">EXPLICACIÓN DE PAGINA</div>
+            <div class="collapsible-header" >EXPLICACIÓN DE PAGINA</div>
             <div class="collapsible-body"><span>Creamos este Bingo para entretener a la gente sin necesidad de que tengan que invertir dinero real, para que de esta manera todo el mundo pueda jugar.
             </span> <br>  <br> <span>  En caso de que tengas suerte y acumules muchos puntos podras ser recompensado con algunos productos a tu elección , depende de tú dedicación conseguir lo que quieras o no.ado con algunos productos a tu eleccion , depende de tu dedicacion conseguir lo que quieras o no.
             

@@ -219,7 +219,7 @@
                     <div>Resultado bolas</div>
                 </div>
                 <div class="col s1" style="text-align: center;">
-                    <a style=" padding: 5%;; color: white;text-align: center ; font-size: 60px;" href="#" class="material-icons" id="abrir" onclick="mostrar()">art_track</a>
+                    <a style=" padding: 5%;; color: white;text-align: center ; font-size: 60px;" href="/welcome"  id="abrir>Volver home</a>
                 </div>
             </div>
         </div>
