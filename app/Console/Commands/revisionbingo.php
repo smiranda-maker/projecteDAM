@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Carton;
 use App\Partida;
+use App\User;
+
 use Illuminate\Support\Facades\DB as DataBase;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -50,23 +52,23 @@ class revisionbingo extends Command
             $partidacreada = 0;
             $partidas  = DataBase::table('partidas')->where('id', '=', $partida->id)->first();
             $arrayCampoNumeros = explode(",", $partidas->numerosQueHanSalido);
-            
-            $repetido=false;
-            $numeronuevo = rand(1,99);
-            if (!in_array($numeronuevo,$arrayCampoNumeros)) {
-                array_push($arrayCampoNumeros,$numeronuevo);
-            }else{
-                $repetido=true;
-                while($repetido){
-                    $numeronuevo=rand(1,99);
-                    if (!in_array($numeronuevo,$arrayCampoNumeros)) {
-                        array_push($arrayCampoNumeros,$numeronuevo);
-                        $repetido=false;
+
+            $repetido = false;
+            $numeronuevo = rand(1, 99);
+            if (!in_array($numeronuevo, $arrayCampoNumeros)) {
+                array_push($arrayCampoNumeros, $numeronuevo);
+            } else {
+                $repetido = true;
+                while ($repetido) {
+                    $numeronuevo = rand(1, 99);
+                    if (!in_array($numeronuevo, $arrayCampoNumeros)) {
+                        array_push($arrayCampoNumeros, $numeronuevo);
+                        $repetido = false;
                     }
                 }
             }
-        
-            Partida::where('id','=', $partida->id)->update(['numerosQueHanSalido' => implode(",",$arrayCampoNumeros)]);
+
+            Partida::where('id', '=', $partida->id)->update(['numerosQueHanSalido' => implode(",", $arrayCampoNumeros)]);
             $jugadorpremiadobingo = 0;
             $partidasdatos = Partida::findOrFail($partida->id);
             $numerosQueHanSalidospit = array();
@@ -249,6 +251,73 @@ class revisionbingo extends Command
                         $partida1->fechaEmpieza = $carbon;
                         $partida1->save();
                         $partidacreada = 1;
+                    }
+                }
+
+                $partidacomprobar = Partida::where('id', '=', $c->partida_id)->get();
+            }
+
+
+            /*controlar ganancias id diferentes jugadores linea horizontal*/
+            if ($partidacomprobar[0]['idcarton_linea'] != null) {
+                $sumaidcartonlinea = 0;
+                //echo $partida->gananciadepartida / 25;
+
+                foreach (explode(',', $partidacomprobar[0]['idcarton_linea']) as $row) {
+                    if ($row != null) {
+                        $sumaidcartonlinea++;
+                    }
+                }
+
+                foreach (explode(',', $partidacomprobar[0]['idcarton_linea']) as $row) {
+                    if ($row != null && $row != 0) {
+
+                        $usuario = User::where('id', '=', $row)->get();
+                        $ganancias = ($partidacomprobar[0]['gananciadepartida'] * 25 / 100) / $sumaidcartonlinea;
+                        $usuario[0]['fichas'] = $usuario[0]['fichas'] + $ganancias;
+
+                        User::where('id', '=', $row)->update(['fichas' => $usuario[0]['fichas']]);
+                    }
+                }
+            }
+            if ($partidacomprobar[0]['idcarton_diagonal'] != null) {
+                /*controlar ganancias id diferentes jugadores linea diagonal*/
+                $sumaidcartonlinea = 0;
+                foreach (explode(',', $partidacomprobar[0]['idcarton_diagonal']) as $row) {
+                    if ($row != null) {
+                        $sumaidcartonlinea++;
+                    }
+                }
+
+                foreach (explode(',', $partidacomprobar[0]['idcarton_diagonal']) as $row) {
+                    //echo $row;
+                    if ($row != null && $row != 0) {
+                        $usuario = User::where('id', '=', $row)->get();
+                        $ganancias = ($partidacomprobar[0]['gananciadepartida'] * 25 / 100) / $sumaidcartonlinea;
+                        // echo $ganancias;
+                        $usuario[0]['fichas'] = $usuario[0]['fichas'] + $ganancias;
+
+                        User::where('id', '=', $row)->update(['fichas' => $usuario[0]['fichas']]);
+                    }
+                }
+            }
+            if ($partidacomprobar[0]['idcarton_bingo'] != null) {
+                /*controlar ganancias id diferentes jugadores Bingo*/
+                $sumaidcartonlinea = 0;
+                foreach (explode(',', $partidacomprobar[0]['idcarton_bingo']) as $row) {
+                    if ($row != null) {
+                        $sumaidcartonlinea++;
+                    }
+                }
+
+                foreach (explode(',', $partidacomprobar[0]['idcarton_bingo']) as $row) {
+                    echo $row;
+                    if ($row != null && $row != 0) {
+                        $usuario = User::where('id', '=', $row)->get();
+                        $ganancias = ($partidacomprobar[0]['gananciadepartida'] * 50 / 100) / $sumaidcartonlinea;
+                        echo $ganancias;
+                        $usuario[0]['fichas'] = $usuario[0]['fichas'] + $ganancias;
+                        User::where('id', '=', $row)->update(['fichas' => $usuario[0]['fichas']]);
                     }
                 }
             }
