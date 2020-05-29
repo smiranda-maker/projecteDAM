@@ -216,7 +216,7 @@
         </div>
 
         <div class="section s2">
-            <h1 class="neon" data-text="Dubai">Dubai</h1>
+            <h1 class="neon" data-text="Las Vegas">Las Vegas</h1>
 
             <div class="numCartones">
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
@@ -236,7 +236,7 @@
         </div>
 
         <div class="section s3">
-            <h1 class="neon" data-text="Las Vegas">Las Vegas</h1>
+            <h1 class="neon" data-text="Dubai">Dubai</h1>
 
             <div class="numCartones">
                 <form method="POST" action="/crearcartones" enctype="multipart/form-data">
