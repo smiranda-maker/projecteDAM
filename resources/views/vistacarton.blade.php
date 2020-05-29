@@ -185,7 +185,7 @@
         <div class=" col s6">
             <div class="carton">
                 <div class="logo-bingo">
-                    <img src="city-logo.png">
+                    <img src="images/city-logo.png">
 
                 </div>
                 <div class="efecto">
