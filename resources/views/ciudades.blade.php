@@ -108,46 +108,72 @@
             width: 120px;"></a>
             <a href="#" data-target="menu-side" class="right sidenav-trigger" style="margin-top: 1%;"><i class="right material-icons blue-text text-lighten-2">menu</i></a>
 
-            <ul class="sidenav" id="menu-side" >
+            <ul class="sidenav" id="menu-side">
 
-                <li>
-                    <div class="user-view">
-                        <div class="background">
-                            <img src="bingo-online.png" class="responsive-img" alt="">
-                        </div>
-                        <a href="#">
-                            <img src="icn.png" alt="" class="circle">
-                        </a>
-                        <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">Omar Loza</span>
-                        </a>
-                        <a href="#">
-                            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">Omar@Loza.com</span>
-                        </a>
+<li>
+    <div class="user-view">
+        <div class="background">
+            <img src="bingo-online.png" class="responsive-img" alt="">
+        </div>
+        <a href="#">
+            <img src="icn.png" alt="" class="circle">
+        </a>
+        <a href="#">
+            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="name white-text">{{ auth()->user()->nombre }}</span>
+        </a>
 
-                    </div>
-                    <a href="#">
-                        <i class="material-icons">home</i>
-                        Inicio
-                    </a>
+        <a href="#">
+            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->email }}</span>
+        </a>
+        <a href="#">
+            <span style="background:rgba(0,0,0,.6); width:110%; margin-left: -4%; " class="email white-text">{{ auth()->user()->fichas }}</span>
+        </a>
 
-                </li>
-                <div class="divider"></div>
-                <li>
-                    <a href="#">
-                        <i class="material-icons">home</i>
-                        Inicio
-                    </a>
-                </li>
-                <div class="divider"></div>
-                <li>
-                    <a href="#">
-                        <i class="material-icons">home</i>
-                        Inicio
-                    </a>
-                </li>
+    </div>
 
-            </ul>
+
+</li>
+<div class="divider"></div>
+<li>
+    <a href="/welcome">
+        <i class="material-icons">home</i>
+        BINGO CITIES
+    </a>
+</li>
+<div class="divider"></div>
+<li>
+    <a href="/ciudades">
+        <i class="material-icons">videogame_asset</i>
+        SALAS
+    </a>
+</li>
+<div class="divider"></div>
+<li>
+    <a href="/todosproductos">
+        <i class="material-icons">store</i>
+        PRODUCTOS
+    </a>
+</li>
+<div class="divider"></div>
+<li>
+    <a href="/productoscomprados">
+        <i class="material-icons">shopping_cart</i>
+        MIS COMPRAS
+    </a>
+</li>
+@if (Auth::check())
+
+<div class="divider"></div>
+<li>
+    <a href="/logout">
+        <i class="material-icons">shopping_cart</i>
+        LOGOUt
+    </a>
+</li>
+@endif
+
+
+</ul>
         </div>
 
     </div>
