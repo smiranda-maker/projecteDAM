@@ -87,6 +87,13 @@ Route::post('/crearcartones', 'PartidaController@crearcartones');
 Route::get('/numerosquehansalido', 'PartidaController@numerosmostrados');
 Route::get('/ultimonumero', 'PartidaController@ultimonumero');
 Route::get('/linea', 'PartidaController@linea');
+<<<<<<< HEAD
+=======
+Route::get('/diagonal', 'PartidaController@diagonal');
+Route::get('/ganador', 'PartidaController@ganador');
+Route::get('/ganadorlinea', 'PartidaController@ganadorlinea');
+Route::get('/cuentaatras', 'PartidaController@cuentaatras');
+>>>>>>> f4ec6af968628502c811e3fdaa60de7123050e3b
 
 Route::get('/diagonal', 'PartidaController@diagonal');
 
@@ -95,11 +102,9 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/pruebafecha',function(){
 
-    $fecha = Carbon::now();
-    $fecha = $fecha->format('Y-m-d:H:i');
-    $partida=Partida::where('fechaEmpieza','>',$fecha)->first();
+    $carbon = Carbon::now();
+    $carbon = $carbon->addHour(1);
+    $carbon = $carbon->format('Y-m-d:H:i');
 
-    return $partida->fechaEmpieza;
-
-
+    return $carbon;
 });
